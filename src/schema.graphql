@@ -1,0 +1,157 @@
+type User {
+  id: id
+}
+type Mutation {
+  createUser(data: CreateUserInput): AuthPaylod!
+  updateUser(data: UpdateUserInput): User!
+  deleteUser(id: ID!): User!
+  loginUser(data: LoginUserInput!): AuthPaylod!
+}
+
+type Publisher {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books: [Books!]!
+  order: Int!
+  isList: Boolean!
+}
+
+type ClassRoom {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isList: Boolean!
+  status: Int!
+  books: [Books!]!
+}
+
+type PubliserYear {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isList: Boolean!
+  status: Int!
+  books: [Books!]!
+}
+
+type Couress {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isList: Boolean!
+  status: Int!
+}
+type Catogory {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isList: Boolean!
+  status: Int!
+}
+
+type Author {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isList: Boolean!
+  status: Int!
+  slug: String!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]!
+  author: [Author!]!
+  couress: [Couress!]!
+  catogory: [Catogory!]!
+  publiserYear: [PubliserYear!]!
+  publisher: [Publisher!]!
+  classRoom: [ClassRoom!]!
+  isListed: Boolean!
+  description: String
+  status: Int!
+  subjects: [subjects!]!
+}
+type Subject {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isList: Boolean!
+  status: Int!
+  videos: [Vedio!]!
+}
+type BookTest {
+  id: ID!
+  title: String!
+  questions: [Questions!]!
+  isList: Boolean!
+  status: Int!
+}
+type Questions {
+  id: ID!
+  title: String!
+  questions: [Questions!]!
+  videos: [Vedio!]!
+  correctAnswer: String
+  bookTest: [BookTest!]!
+  status: Int!
+}
+type Vedio {
+  id: ID!
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects: [Subject!]!
+  questions: [Questions!]!
+  order: Int!
+  status: String!
+}
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+}
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+input UpdateUserInput {
+  email: String
+  password: String
+  name: String
+}
+
+type User {
+  id: ID!
+  email: String!
+  password: String!
+  name: String!
+}
+type AuthPaylod {
+  token: String!
+  user: User!
+}
+type UpludePayload {
+  photo: String!
+}
+input CreateUserInput {
+  email: String!
+  password: String!
+  name: String!
+}

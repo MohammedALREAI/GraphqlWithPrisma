@@ -1,0 +1,172 @@
+
+type Publisher {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  order: Int!
+  isList: Boolean!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type ClassRoom {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isList: Boolean!
+  status: Int!
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type PubliserYear {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isList: Boolean!
+  status: Int!
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Couress {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  isList: Boolean!
+  status: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Catogory {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  isList: Boolean!
+  status: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Author {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
+  isList: Boolean!
+  status: Int!
+  slug: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Book {
+  id: ID!
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]! @scalarList(strategy: RELATION)
+  author: [Author!]!@realtion(name:"BookToAuthors",onDelete: CASCADE)
+  couress: [Couress!]!@realtion(name:"BookToCouress",onDelete: CASCADE)
+  catogory: [Catogory!]!@realtion(name:"BookToCatogory",onDelete: CASCADE)
+  publiserYear: [PubliserYear!]! @realtion(name:"BookToPubliserYear",onDelete: CASCADE)
+  publisher: [Publisher!]!@realtion(name:"BookToPublisher",onDelete: CASCADE)
+  classRoom: [ClassRoom!]!@realtion(name:"BookToClassRoom",onDelete: CASCADE)
+  isListed: Boolean!@default(value:false)
+  description: String
+  status: Int!
+  subjects: [Subject!]!@realtion(name:"BookToSubject",onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Subject {
+  id: ID!
+  title: String!
+  description: String
+  books:[Books!]! @realtion(name:"SubjectToBooks",onDelete: SET_NULL)
+  isList: Boolean!
+  status: Int!
+  videos: [Vedio!]! @realtion(name:"SubjectToVedio",onDelete: CASCADE)
+ createdAt: DateTime! @createdAt
+ updatedAt: DateTime! @updatedAt
+}
+type BookTest {
+  id: ID!
+  title: String!
+  questions: [Questions!]! @realtion(name:"BookTestToQuestions",onDelete: CASCADE)
+  isList: Boolean!
+  status: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Vedio {
+  id: ID!
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects: [Subject!]! @realtion(name:"VedioToSubject",onDelete: CASCADE)
+  questions: [Questions!]! @realtion(name:"VedioToQuestions",onDelete: CASCADE)
+  order: Int!
+  status: String!
+}
+type Questions {
+  id: ID!
+  title: String!
+  videos: [Vedio!]! @realtion(name:"QuestionsToVedio",onDelete:CASCADE)
+  correctAnswer: String
+  bookTest: BookTest! @realtion(name:"QuestionsToBookTest",onDelete: SET_NULL)
+  status: Int!
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type Couress{
+      id:ID @ID
+ title:String!
+ slug:String!
+ createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Auther{
+id:ID @ID
+ title:String!
+ slug:String!
+ description:String
+ isList:String
+ sstutus:String!
+ book:[Book!]!@realtion(name:"AuthorToBooks", onDelete: CASCADE)
+createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
