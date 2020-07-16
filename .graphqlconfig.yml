@@ -8,9 +8,8 @@ projects:
    prisma:
     schemaPath: src/generated/prisma.graphql
     extensions:
-      prisma: prisma/prisma.yml
+      prisma: app/prisma.yml
       endpoints:
         default: https://weby-ee924decca.herokuapp.com/graphqwith prisma/dev
-
       output:
-          binding: src/generated/prisma.js
+          binding: src/generated/prisma.graphql
