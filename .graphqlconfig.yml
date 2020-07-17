@@ -1,15 +1,10 @@
-
 projects:
   app:
-    schemaPath: src/schema.graphql
+    schemaPath: "src/schema.graphql"
     extensions:
       endpoints:
-        default: http://localhost:4000
-   prisma:
-    schemaPath: src/generated/prisma.graphql
+        default: "http://localhost:4000"
+  prisma:
+    schemaPath: "src/generated/prisma.graphql"
     extensions:
-      prisma: app/prisma.yml
-      endpoints:
-        default: https://weby-ee924decca.herokuapp.com/graphqwith prisma/dev
-      output:
-          binding: src/generated/prisma.graphql
+      prisma: prisma/prisma.yml

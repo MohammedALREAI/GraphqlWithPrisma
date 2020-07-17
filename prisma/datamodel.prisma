@@ -1,77 +1,5 @@
-
-type Publisher {
-  id: ID!
-  title: String!
-  slug: String!
-  description: String
-  phoneNumber: String
-  address: String
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  order: Int!
-  isList: Boolean!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
-type ClassRoom {
-  id: ID!
-  title: String!
-  slug: String!
-  description: String
-  isList: Boolean!
-  status: Int!
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
-type PubliserYear {
-  id: ID!
-  title: String!
-  slug: String!
-  description: String
-  isList: Boolean!
-  status: Int!
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
-type Couress {
-  id: ID!
-  title: String!
-  description: String
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  isList: Boolean!
-  status: Int!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-type Catogory {
-  id: ID!
-  title: String!
-  description: String
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  isList: Boolean!
-  status: Int!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
-type Author {
-  id: ID!
-  title: String!
-  description: String
-  books: [Books!]! @realtion(name:"BookToAuthors",onDelete: CASCADE)
-  isList: Boolean!
-  status: Int!
-  slug: String!
-  createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
-
 type Book {
-  id: ID!
+  id: ID! @id
   title: String!
   slug: String!
   isbn: String
@@ -80,12 +8,12 @@ type Book {
   shopeLink: String
   cover: String
   photos: [String!]! @scalarList(strategy: RELATION)
-  author: [Author!]!@realtion(name:"BookToAuthors",onDelete: CASCADE)
+  author: [Author!]!@realtion(name:"BookToAuthors",onDelete: SET_NULL)
   couress: [Couress!]!@realtion(name:"BookToCouress",onDelete: CASCADE)
-  catogory: [Catogory!]!@realtion(name:"BookToCatogory",onDelete: CASCADE)
+  catogory: [Catogory!]!@realtion(name:"BookToCatogory",onDelete: SET_NULL)
   publiserYear: [PubliserYear!]! @realtion(name:"BookToPubliserYear",onDelete: CASCADE)
-  publisher: [Publisher!]!@realtion(name:"BookToPublisher",onDelete: CASCADE)
-  classRoom: [ClassRoom!]!@realtion(name:"BookToClassRoom",onDelete: CASCADE)
+  publisher: [Publisher!]!@realtion(name:"BookToPublisher",onDelete: SET_NULL)
+  classRoom: [ClassRoom!]!@realtion(name:"BookToClassRoom",onDelete: SET_NULL)
   isListed: Boolean!@default(value:false)
   description: String
   status: Int!
@@ -93,38 +21,110 @@ type Book {
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
-type Subject {
-  id: ID!
+type Publisher {
+  id: ID! @id
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books: [Book!]! @realtion(name:"PublisherToBooks",onDelete: CASCADE)
+  order: Int!
+  isListed: Boolean!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type ClassRoom {
+  id: ID! @id
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: [Book!]! @realtion(name:"ClassRoomToBooks",onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type PubliserYear {
+  id: ID! @id
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: [Book!]! @realtion(name:"PubliserYearToBooks",onDelete: CASCADE)
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Couress {
+  id: ID! @id
   title: String!
   description: String
-  books:[Books!]! @realtion(name:"SubjectToBooks",onDelete: SET_NULL)
-  isList: Boolean!
+  books: [Book!]! @realtion(name:"CouressToBooks",onDelete: CASCADE)
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+type Catogory {
+  id: ID! @id
+  title: String!
+  description: String
+  books: [Book!]! @realtion(name:"CatogoryToBooks",onDelete: CASCADE)
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+type Author {
+  id: ID! @id
+  title: String!
+  description: String
+  books: [Book!]! @realtion(name:"AuthorToBooks",onDelete: CASCADE)
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+  createdAt: DateTime! @createdAt
+  updatedAt: DateTime! @updatedAt
+}
+
+
+type Subject {
+  id: ID! @id
+  title: String!
+  description: String
+  books:[Book!]! @realtion(name:"SubjectToBooks",onDelete: SET_NULL)
+  isListed: Boolean!
   status: Int!
   videos: [Vedio!]! @realtion(name:"SubjectToVedio",onDelete: CASCADE)
  createdAt: DateTime! @createdAt
  updatedAt: DateTime! @updatedAt
 }
 type BookTest {
-  id: ID!
+  id: ID! @id
   title: String!
   questions: [Questions!]! @realtion(name:"BookTestToQuestions",onDelete: CASCADE)
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
   createdAt: DateTime! @createdAt
   updatedAt: DateTime! @updatedAt
 }
 type Vedio {
-  id: ID!
+  id: ID! @id
   title: String!
   vedioSourse: String!
   vedioUrl: String!
-  subjects: [Subject!]! @realtion(name:"VedioToSubject",onDelete: CASCADE)
-  questions: [Questions!]! @realtion(name:"VedioToQuestions",onDelete: CASCADE)
+  subjects: [Subject!]! @realtion(name:"VedioToSubject",onDelete: SET_NULL)
+  questions: [Questions!]! @realtion(name:"VedioToQuestions",onDelete: SET_NULL)
   order: Int!
   status: String!
 }
 type Questions {
-  id: ID!
+  id: ID! @id
   title: String!
   videos: [Vedio!]! @realtion(name:"QuestionsToVedio",onDelete:CASCADE)
   correctAnswer: String
@@ -150,23 +150,5 @@ type Questions {
 
 
 
-type Couress{
-      id:ID @ID
- title:String!
- slug:String!
- createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
 
-type Auther{
-id:ID @ID
- title:String!
- slug:String!
- description:String
- isList:String
- sstutus:String!
- book:[Book!]!@realtion(name:"AuthorToBooks", onDelete: CASCADE)
-createdAt: DateTime! @createdAt
-  updatedAt: DateTime! @updatedAt
-}
 

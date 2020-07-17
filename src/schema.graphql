@@ -1,12 +1,113 @@
-type User {
-  id: id
-}
 type Mutation {
   createUser(data: CreateUserInput): AuthPaylod!
   updateUser(data: UpdateUserInput): User!
   deleteUser(id: ID!): User!
   loginUser(data: LoginUserInput!): AuthPaylod!
+#  publisher
+  createpublisher(data: CreatePublisherInput): Publisher!
+  updatepublisher(data: UpdatePublisherInput): Publisher!
+  deletepublisher(id: ID!): Publisher!
+
+# classRooms
+ createclassRooms(data: CreateclassRoomInput): classRoom!
+updateclassRooms(data: UpdateclassRoomInput): classRoom!
+deleteclassRooms(id: ID!): classRoom!
+# Catogory
+createCatogory(data: CreateCatogoryInput): Catogory!
+updateCatogory(data: UpdateCatogoryInput): Catogory!
+deleteCatogory(id: ID!): Catogory!
+# PubliserYear
+createPubliserYear(data: CreatePubliserYearInput): PubliserYear!
+updatePubliserYear(data: UpdatePubliserYearInput):PubliserYearrYear!
+deletePubliserYear(id: ID!): PubliserYear!
+# Catogory
+createCatogory(data: CreateCatogoryInput): Catogory!
+updateCatogory(data: UpdateCatogoryInput):Catogory!
+deleteCatogory(id: ID!): Catogory!
+# publiserYears
+createpubliserYears(data: CreatepubliserYearsInput): publiserYears!
+updatepubliserYears(data: UpdatepubliserYearsInput):publiserYears!
+deletepubliserYears(id: ID!): publiserYears!
+# Author
+createAuthor(data: CreateAuthorInput): Author!
+updateAuthor(data: UpdateAuthorInput):Author!
+deleteAuthor(id: ID!): Author!
+# Vedio
+createVedio(data: CreateVedioInput): Vedio!
+updateVedio(data: UpdateVedioInput):Vedio!
+deleteVedio(id: ID!): Vedio!
+# Catogory
+createCatogory(data: CreateCatogoryInput): Catogory!
+updateCatogory(data: UpdateCatogoryInput):Catogory!
+deleteCatogory(id: ID!): Catogory
+
+# Books
+createBook(data: CreateBookInput): Book!
+updateBook(data: UpdateBookInput):Book!
+deleteBook(id: ID!Book!
+# Subject
+createSubject(data: CreateSubjectInput): Subject!
+updateSubject(data: UpdateSubjectInput):Subject!
+deleteSubject(id: ID!Book!
+
+# BookTest
+createBookTest(data: CreateBookTestInput): BookTest!
+updateBookTest(data: UpdateBookTestInput):BookTest!
+deleteBookTest(id: ID!BookTest!
+
+
+
+# Questions
+createQuestions(data: CreateQuestionsInput): Questions!
+updateQuestions(data: UpdateQuestionsInput):Questions!
+deleteQuestions(id: ID!Book!
+
+# couress
+
 }
+
+type Query {
+
+users: [User!]!
+user(id: ID!): User
+
+publishers(query:String):[Publisher!]!
+publisher(id:ID!):publisher!
+
+classRooms(query:String):[classRoom!]!
+classRoom(id:ID!):ClassRoom!
+
+catogorys:(query:String):[Catogory!]!
+catogory:(id:ID!):Catogory!
+
+publiserYears:(query:String):[PubliserYear!]!-
+publiserYear:(id:ID):publiserYear!
+
+couress:(query:String):[Couress!]!
+coures:(id:ID!):Couress!
+
+authors:(query:String):[Author!]!
+author:(id:ID!):Author!
+
+videos:(query:String):[Vedio!]!
+vedio:(id:ID):Vedio!
+
+catogorys:(query:String):[Catogory!]!
+catogory:(id:ID):Catogory!
+
+books:(query:String):[Book!]!
+book:(id:ID!):Book!
+
+subjects:(query:StringSubject!]!
+subject:(id:ID):Subject!
+
+bookTests:(query:String):[BookTest!]!
+bookTest:(id:ID!):BookTest!
+
+questions:(query:String):[Questions!]!
+question:(id:ID!):Questions!
+}
+
 
 type Publisher {
   id: ID!
@@ -17,7 +118,7 @@ type Publisher {
   address: String
   books: [Books!]!
   order: Int!
-  isList: Boolean!
+  isListed: Boolean!
 }
 
 type ClassRoom {
@@ -25,35 +126,38 @@ type ClassRoom {
   title: String!
   slug: String!
   description: String
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
   books: [Books!]!
 }
+
 
 type PubliserYear {
   id: ID!
   title: String!
   slug: String!
   description: String
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
   books: [Books!]!
 }
 
+# startCouress
 type Couress {
   id: ID!
   title: String!
   description: String
   books: [Books!]!
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
 }
+
 type Catogory {
   id: ID!
   title: String!
   description: String
   books: [Books!]!
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
 }
 
@@ -62,7 +166,7 @@ type Author {
   title: String!
   description: String
   books: [Books!]!
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
   slug: String!
 }
@@ -88,20 +192,26 @@ type Book {
   status: Int!
   subjects: [subjects!]!
 }
+
 type Subject {
   id: ID!
   title: String!
   description: String
   books: [Books!]!
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
   videos: [Vedio!]!
 }
+
+
+
+
+# end subjects
 type BookTest {
   id: ID!
   title: String!
   questions: [Questions!]!
-  isList: Boolean!
+  isListed: Boolean!
   status: Int!
 }
 type Questions {
@@ -113,6 +223,9 @@ type Questions {
   bookTest: [BookTest!]!
   status: Int!
 }
+
+
+
 type Vedio {
   id: ID!
   title: String!
@@ -123,10 +236,26 @@ type Vedio {
   order: Int!
   status: String!
 }
-type Query {
-  users: [User!]!
-  user(id: ID!): User
+type User {
+  id: ID!
+  email: String!
+  password: String!
+  name: String!
 }
+
+
+
+type AuthPaylod {
+  token: String!
+  user: User!
+}
+type UpludePayload {
+  photo: String!
+}
+
+# input  all  items
+
+
 input LoginUserInput {
   email: String!
   password: String!
@@ -137,21 +266,90 @@ input UpdateUserInput {
   name: String
 }
 
-type User {
-  id: ID!
-  email: String!
-  password: String!
-  name: String!
-}
-type AuthPaylod {
-  token: String!
-  user: User!
-}
-type UpludePayload {
-  photo: String!
-}
+
 input CreateUserInput {
   email: String!
   password: String!
   name: String!
+}
+
+
+
+input CreatePublisherInput{
+
+}
+input UpdatePublisherInput{
+
+
+}
+input CreateclassRoomInput{
+     correctAnswer:String!
+
+}
+input UpdateclassRoomInput{
+correctAnswer:String!
+}
+input CreateCatogoryInput{
+
+}
+input UpdateCatogoryInput
+input CreatePubliserYearInput{
+
+}
+input UpdatePubliserYearInput{
+
+}
+input CreateCatogoryInput{
+
+}
+input UpdateCatogoryInput{
+
+}
+input CreatepubliserYearsInput{
+
+}
+input UpdatepubliserYearsInput{
+
+}
+input CreateAuthorInput{
+
+}
+input UpdateAuthorInput{
+
+}
+input CreateVedioInput{
+
+}
+input UpdateVedioInput{
+
+}
+input CreateCatogoryInput{
+
+}
+input UpdateCatogoryInput{
+
+}
+input CreateBookInput{
+
+}
+input UpdateBookInput
+input CreateSubjectInput{
+title:String!
+description:String!
+}
+input UpdateSubjectInput{
+title:String!
+description:String!
+}
+input CreateBookTestInput{
+
+}
+input UpdateBookTestInput{
+
+}
+input CreateQuestionsInput{
+
+}
+input UpdateQuestionsInput{
+
 }
