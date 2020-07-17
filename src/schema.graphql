@@ -318,10 +318,14 @@ input UpdateAuthorInput{
 
 }
 input CreateVedioInput{
-
+title:String!
+vedioSourse:String!
+vedioUrl:String
 }
 input UpdateVedioInput{
-
+title:String
+vedioSourse:String
+vedioUrl:String
 }
 input CreateCatogoryInput{
 
@@ -342,14 +346,17 @@ title:String!
 description:String!
 }
 input CreateBookTestInput{
-
+title:String!
 }
 input UpdateBookTestInput{
-
+title:String
 }
 input CreateQuestionsInput{
+ title:String!
+ correctAnswer:String
 
 }
 input UpdateQuestionsInput{
-
+title:String
+correctAnswer:String
 }
