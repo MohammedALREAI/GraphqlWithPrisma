@@ -1,0 +1,4426 @@
+type AggregateAuthor {
+  count: Int!
+}
+
+type AggregateBook {
+  count: Int!
+}
+
+type AggregateBookTest {
+  count: Int!
+}
+
+type AggregateCatogory {
+  count: Int!
+}
+
+type AggregateClassRoom {
+  count: Int!
+}
+
+type AggregateCouress {
+  count: Int!
+}
+
+type AggregatePubliserYear {
+  count: Int!
+}
+
+type AggregatePublisher {
+  count: Int!
+}
+
+type AggregateQuestions {
+  count: Int!
+}
+
+type AggregateSubject {
+  count: Int!
+}
+
+type AggregateVedio {
+  count: Int!
+}
+
+type Author {
+  id: ID!
+  title: String!
+  description: String
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type AuthorConnection {
+  pageInfo: PageInfo!
+  edges: [AuthorEdge]!
+  aggregate: AggregateAuthor!
+}
+
+input AuthorCreateInput {
+  id: ID
+  title: String!
+  description: String
+  books: BookCreateManyWithoutAuthorInput
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+}
+
+input AuthorCreateManyWithoutBooksInput {
+  create: [AuthorCreateWithoutBooksInput!]
+  connect: [AuthorWhereUniqueInput!]
+}
+
+input AuthorCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+}
+
+type AuthorEdge {
+  node: Author!
+  cursor: String!
+}
+
+enum AuthorOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  slug_ASC
+  slug_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type AuthorPreviousValues {
+  id: ID!
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input AuthorScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [AuthorScalarWhereInput!]
+  OR: [AuthorScalarWhereInput!]
+  NOT: [AuthorScalarWhereInput!]
+}
+
+type AuthorSubscriptionPayload {
+  mutation: MutationType!
+  node: Author
+  updatedFields: [String!]
+  previousValues: AuthorPreviousValues
+}
+
+input AuthorSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: AuthorWhereInput
+  AND: [AuthorSubscriptionWhereInput!]
+  OR: [AuthorSubscriptionWhereInput!]
+  NOT: [AuthorSubscriptionWhereInput!]
+}
+
+input AuthorUpdateInput {
+  title: String
+  description: String
+  books: BookUpdateManyWithoutAuthorInput
+  isListed: Boolean
+  status: Int
+  slug: String
+}
+
+input AuthorUpdateManyDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+  slug: String
+}
+
+input AuthorUpdateManyMutationInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+  slug: String
+}
+
+input AuthorUpdateManyWithoutBooksInput {
+  create: [AuthorCreateWithoutBooksInput!]
+  delete: [AuthorWhereUniqueInput!]
+  connect: [AuthorWhereUniqueInput!]
+  set: [AuthorWhereUniqueInput!]
+  disconnect: [AuthorWhereUniqueInput!]
+  update: [AuthorUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [AuthorUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [AuthorScalarWhereInput!]
+  updateMany: [AuthorUpdateManyWithWhereNestedInput!]
+}
+
+input AuthorUpdateManyWithWhereNestedInput {
+  where: AuthorScalarWhereInput!
+  data: AuthorUpdateManyDataInput!
+}
+
+input AuthorUpdateWithoutBooksDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+  slug: String
+}
+
+input AuthorUpdateWithWhereUniqueWithoutBooksInput {
+  where: AuthorWhereUniqueInput!
+  data: AuthorUpdateWithoutBooksDataInput!
+}
+
+input AuthorUpsertWithWhereUniqueWithoutBooksInput {
+  where: AuthorWhereUniqueInput!
+  update: AuthorUpdateWithoutBooksDataInput!
+  create: AuthorCreateWithoutBooksInput!
+}
+
+input AuthorWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [AuthorWhereInput!]
+  OR: [AuthorWhereInput!]
+  NOT: [AuthorWhereInput!]
+}
+
+input AuthorWhereUniqueInput {
+  id: ID
+}
+
+type BatchPayload {
+  count: Long!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]!
+  author(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author!]
+  couress(where: CouressWhereInput, orderBy: CouressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Couress!]
+  catogory(where: CatogoryWhereInput, orderBy: CatogoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Catogory!]
+  publiserYear(where: PubliserYearWhereInput, orderBy: PubliserYearOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PubliserYear!]
+  publisher(where: PublisherWhereInput, orderBy: PublisherOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Publisher!]
+  classRoom(where: ClassRoomWhereInput, orderBy: ClassRoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ClassRoom!]
+  isListed: Boolean!
+  description: String
+  status: Int!
+  subjects(where: SubjectWhereInput, orderBy: SubjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Subject!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookConnection {
+  pageInfo: PageInfo!
+  edges: [BookEdge]!
+  aggregate: AggregateBook!
+}
+
+input BookCreateInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateManyWithoutAuthorInput {
+  create: [BookCreateWithoutAuthorInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutCatogoryInput {
+  create: [BookCreateWithoutCatogoryInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutClassRoomInput {
+  create: [BookCreateWithoutClassRoomInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutCouressInput {
+  create: [BookCreateWithoutCouressInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutPubliserYearInput {
+  create: [BookCreateWithoutPubliserYearInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutPublisherInput {
+  create: [BookCreateWithoutPublisherInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreateManyWithoutSubjectsInput {
+  create: [BookCreateWithoutSubjectsInput!]
+  connect: [BookWhereUniqueInput!]
+}
+
+input BookCreatephotosInput {
+  set: [String!]
+}
+
+input BookCreateWithoutAuthorInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutCatogoryInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutClassRoomInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutCouressInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutPubliserYearInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutPublisherInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+  subjects: SubjectCreateManyWithoutBooksInput
+}
+
+input BookCreateWithoutSubjectsInput {
+  id: ID
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: BookCreatephotosInput
+  author: AuthorCreateManyWithoutBooksInput
+  couress: CouressCreateManyWithoutBooksInput
+  catogory: CatogoryCreateManyWithoutBooksInput
+  publiserYear: PubliserYearCreateManyWithoutBooksInput
+  publisher: PublisherCreateManyWithoutBooksInput
+  classRoom: ClassRoomCreateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int!
+}
+
+type BookEdge {
+  node: Book!
+  cursor: String!
+}
+
+enum BookOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  slug_ASC
+  slug_DESC
+  isbn_ASC
+  isbn_DESC
+  size_ASC
+  size_DESC
+  price_ASC
+  price_DESC
+  shopeLink_ASC
+  shopeLink_DESC
+  cover_ASC
+  cover_DESC
+  isListed_ASC
+  isListed_DESC
+  description_ASC
+  description_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BookPreviousValues {
+  id: ID!
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]!
+  isListed: Boolean!
+  description: String
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input BookScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  isbn: String
+  isbn_not: String
+  isbn_in: [String!]
+  isbn_not_in: [String!]
+  isbn_lt: String
+  isbn_lte: String
+  isbn_gt: String
+  isbn_gte: String
+  isbn_contains: String
+  isbn_not_contains: String
+  isbn_starts_with: String
+  isbn_not_starts_with: String
+  isbn_ends_with: String
+  isbn_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
+  shopeLink: String
+  shopeLink_not: String
+  shopeLink_in: [String!]
+  shopeLink_not_in: [String!]
+  shopeLink_lt: String
+  shopeLink_lte: String
+  shopeLink_gt: String
+  shopeLink_gte: String
+  shopeLink_contains: String
+  shopeLink_not_contains: String
+  shopeLink_starts_with: String
+  shopeLink_not_starts_with: String
+  shopeLink_ends_with: String
+  shopeLink_not_ends_with: String
+  cover: String
+  cover_not: String
+  cover_in: [String!]
+  cover_not_in: [String!]
+  cover_lt: String
+  cover_lte: String
+  cover_gt: String
+  cover_gte: String
+  cover_contains: String
+  cover_not_contains: String
+  cover_starts_with: String
+  cover_not_starts_with: String
+  cover_ends_with: String
+  cover_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookScalarWhereInput!]
+  OR: [BookScalarWhereInput!]
+  NOT: [BookScalarWhereInput!]
+}
+
+type BookSubscriptionPayload {
+  mutation: MutationType!
+  node: Book
+  updatedFields: [String!]
+  previousValues: BookPreviousValues
+}
+
+input BookSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BookWhereInput
+  AND: [BookSubscriptionWhereInput!]
+  OR: [BookSubscriptionWhereInput!]
+  NOT: [BookSubscriptionWhereInput!]
+}
+
+type BookTest {
+  id: ID!
+  title: String!
+  questions(where: QuestionsWhereInput, orderBy: QuestionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Questions!]
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookTestConnection {
+  pageInfo: PageInfo!
+  edges: [BookTestEdge]!
+  aggregate: AggregateBookTest!
+}
+
+input BookTestCreateInput {
+  id: ID
+  title: String!
+  questions: QuestionsCreateManyWithoutBookTestInput
+  isListed: Boolean!
+  status: Int!
+}
+
+input BookTestCreateOneWithoutQuestionsInput {
+  create: BookTestCreateWithoutQuestionsInput
+  connect: BookTestWhereUniqueInput
+}
+
+input BookTestCreateWithoutQuestionsInput {
+  id: ID
+  title: String!
+  isListed: Boolean!
+  status: Int!
+}
+
+type BookTestEdge {
+  node: BookTest!
+  cursor: String!
+}
+
+enum BookTestOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type BookTestPreviousValues {
+  id: ID!
+  title: String!
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type BookTestSubscriptionPayload {
+  mutation: MutationType!
+  node: BookTest
+  updatedFields: [String!]
+  previousValues: BookTestPreviousValues
+}
+
+input BookTestSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: BookTestWhereInput
+  AND: [BookTestSubscriptionWhereInput!]
+  OR: [BookTestSubscriptionWhereInput!]
+  NOT: [BookTestSubscriptionWhereInput!]
+}
+
+input BookTestUpdateInput {
+  title: String
+  questions: QuestionsUpdateManyWithoutBookTestInput
+  isListed: Boolean
+  status: Int
+}
+
+input BookTestUpdateManyMutationInput {
+  title: String
+  isListed: Boolean
+  status: Int
+}
+
+input BookTestUpdateOneRequiredWithoutQuestionsInput {
+  create: BookTestCreateWithoutQuestionsInput
+  update: BookTestUpdateWithoutQuestionsDataInput
+  upsert: BookTestUpsertWithoutQuestionsInput
+  connect: BookTestWhereUniqueInput
+}
+
+input BookTestUpdateWithoutQuestionsDataInput {
+  title: String
+  isListed: Boolean
+  status: Int
+}
+
+input BookTestUpsertWithoutQuestionsInput {
+  update: BookTestUpdateWithoutQuestionsDataInput!
+  create: BookTestCreateWithoutQuestionsInput!
+}
+
+input BookTestWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  questions_every: QuestionsWhereInput
+  questions_some: QuestionsWhereInput
+  questions_none: QuestionsWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookTestWhereInput!]
+  OR: [BookTestWhereInput!]
+  NOT: [BookTestWhereInput!]
+}
+
+input BookTestWhereUniqueInput {
+  id: ID
+}
+
+input BookUpdateInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateManyDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  isListed: Boolean
+  description: String
+  status: Int
+}
+
+input BookUpdateManyMutationInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  isListed: Boolean
+  description: String
+  status: Int
+}
+
+input BookUpdateManyWithoutAuthorInput {
+  create: [BookCreateWithoutAuthorInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutAuthorInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutAuthorInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutCatogoryInput {
+  create: [BookCreateWithoutCatogoryInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutCatogoryInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutCatogoryInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutClassRoomInput {
+  create: [BookCreateWithoutClassRoomInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutClassRoomInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutClassRoomInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutCouressInput {
+  create: [BookCreateWithoutCouressInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutCouressInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutCouressInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutPubliserYearInput {
+  create: [BookCreateWithoutPubliserYearInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutPubliserYearInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutPubliserYearInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutPublisherInput {
+  create: [BookCreateWithoutPublisherInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutPublisherInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutPublisherInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithoutSubjectsInput {
+  create: [BookCreateWithoutSubjectsInput!]
+  delete: [BookWhereUniqueInput!]
+  connect: [BookWhereUniqueInput!]
+  set: [BookWhereUniqueInput!]
+  disconnect: [BookWhereUniqueInput!]
+  update: [BookUpdateWithWhereUniqueWithoutSubjectsInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutSubjectsInput!]
+  deleteMany: [BookScalarWhereInput!]
+  updateMany: [BookUpdateManyWithWhereNestedInput!]
+}
+
+input BookUpdateManyWithWhereNestedInput {
+  where: BookScalarWhereInput!
+  data: BookUpdateManyDataInput!
+}
+
+input BookUpdatephotosInput {
+  set: [String!]
+}
+
+input BookUpdateWithoutAuthorDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutCatogoryDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutClassRoomDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutCouressDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutPubliserYearDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutPublisherDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+  subjects: SubjectUpdateManyWithoutBooksInput
+}
+
+input BookUpdateWithoutSubjectsDataInput {
+  title: String
+  slug: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+  photos: BookUpdatephotosInput
+  author: AuthorUpdateManyWithoutBooksInput
+  couress: CouressUpdateManyWithoutBooksInput
+  catogory: CatogoryUpdateManyWithoutBooksInput
+  publiserYear: PubliserYearUpdateManyWithoutBooksInput
+  publisher: PublisherUpdateManyWithoutBooksInput
+  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  isListed: Boolean
+  description: String
+  status: Int
+}
+
+input BookUpdateWithWhereUniqueWithoutAuthorInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutAuthorDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutCatogoryInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutCatogoryDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutClassRoomInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutClassRoomDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutCouressInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutCouressDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutPubliserYearInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutPubliserYearDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutPublisherInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutPublisherDataInput!
+}
+
+input BookUpdateWithWhereUniqueWithoutSubjectsInput {
+  where: BookWhereUniqueInput!
+  data: BookUpdateWithoutSubjectsDataInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutAuthorInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutAuthorDataInput!
+  create: BookCreateWithoutAuthorInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutCatogoryInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutCatogoryDataInput!
+  create: BookCreateWithoutCatogoryInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutClassRoomInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutClassRoomDataInput!
+  create: BookCreateWithoutClassRoomInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutCouressInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutCouressDataInput!
+  create: BookCreateWithoutCouressInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutPubliserYearInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutPubliserYearDataInput!
+  create: BookCreateWithoutPubliserYearInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutPublisherInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutPublisherDataInput!
+  create: BookCreateWithoutPublisherInput!
+}
+
+input BookUpsertWithWhereUniqueWithoutSubjectsInput {
+  where: BookWhereUniqueInput!
+  update: BookUpdateWithoutSubjectsDataInput!
+  create: BookCreateWithoutSubjectsInput!
+}
+
+input BookWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  isbn: String
+  isbn_not: String
+  isbn_in: [String!]
+  isbn_not_in: [String!]
+  isbn_lt: String
+  isbn_lte: String
+  isbn_gt: String
+  isbn_gte: String
+  isbn_contains: String
+  isbn_not_contains: String
+  isbn_starts_with: String
+  isbn_not_starts_with: String
+  isbn_ends_with: String
+  isbn_not_ends_with: String
+  size: String
+  size_not: String
+  size_in: [String!]
+  size_not_in: [String!]
+  size_lt: String
+  size_lte: String
+  size_gt: String
+  size_gte: String
+  size_contains: String
+  size_not_contains: String
+  size_starts_with: String
+  size_not_starts_with: String
+  size_ends_with: String
+  size_not_ends_with: String
+  price: Int
+  price_not: Int
+  price_in: [Int!]
+  price_not_in: [Int!]
+  price_lt: Int
+  price_lte: Int
+  price_gt: Int
+  price_gte: Int
+  shopeLink: String
+  shopeLink_not: String
+  shopeLink_in: [String!]
+  shopeLink_not_in: [String!]
+  shopeLink_lt: String
+  shopeLink_lte: String
+  shopeLink_gt: String
+  shopeLink_gte: String
+  shopeLink_contains: String
+  shopeLink_not_contains: String
+  shopeLink_starts_with: String
+  shopeLink_not_starts_with: String
+  shopeLink_ends_with: String
+  shopeLink_not_ends_with: String
+  cover: String
+  cover_not: String
+  cover_in: [String!]
+  cover_not_in: [String!]
+  cover_lt: String
+  cover_lte: String
+  cover_gt: String
+  cover_gte: String
+  cover_contains: String
+  cover_not_contains: String
+  cover_starts_with: String
+  cover_not_starts_with: String
+  cover_ends_with: String
+  cover_not_ends_with: String
+  author_every: AuthorWhereInput
+  author_some: AuthorWhereInput
+  author_none: AuthorWhereInput
+  couress_every: CouressWhereInput
+  couress_some: CouressWhereInput
+  couress_none: CouressWhereInput
+  catogory_every: CatogoryWhereInput
+  catogory_some: CatogoryWhereInput
+  catogory_none: CatogoryWhereInput
+  publiserYear_every: PubliserYearWhereInput
+  publiserYear_some: PubliserYearWhereInput
+  publiserYear_none: PubliserYearWhereInput
+  publisher_every: PublisherWhereInput
+  publisher_some: PublisherWhereInput
+  publisher_none: PublisherWhereInput
+  classRoom_every: ClassRoomWhereInput
+  classRoom_some: ClassRoomWhereInput
+  classRoom_none: ClassRoomWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  subjects_every: SubjectWhereInput
+  subjects_some: SubjectWhereInput
+  subjects_none: SubjectWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [BookWhereInput!]
+  OR: [BookWhereInput!]
+  NOT: [BookWhereInput!]
+}
+
+input BookWhereUniqueInput {
+  id: ID
+}
+
+type Catogory {
+  id: ID!
+  title: String!
+  description: String
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CatogoryConnection {
+  pageInfo: PageInfo!
+  edges: [CatogoryEdge]!
+  aggregate: AggregateCatogory!
+}
+
+input CatogoryCreateInput {
+  id: ID
+  title: String!
+  description: String
+  books: BookCreateManyWithoutCatogoryInput
+  isListed: Boolean!
+  status: Int!
+}
+
+input CatogoryCreateManyWithoutBooksInput {
+  create: [CatogoryCreateWithoutBooksInput!]
+  connect: [CatogoryWhereUniqueInput!]
+}
+
+input CatogoryCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+}
+
+type CatogoryEdge {
+  node: Catogory!
+  cursor: String!
+}
+
+enum CatogoryOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CatogoryPreviousValues {
+  id: ID!
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CatogoryScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CatogoryScalarWhereInput!]
+  OR: [CatogoryScalarWhereInput!]
+  NOT: [CatogoryScalarWhereInput!]
+}
+
+type CatogorySubscriptionPayload {
+  mutation: MutationType!
+  node: Catogory
+  updatedFields: [String!]
+  previousValues: CatogoryPreviousValues
+}
+
+input CatogorySubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CatogoryWhereInput
+  AND: [CatogorySubscriptionWhereInput!]
+  OR: [CatogorySubscriptionWhereInput!]
+  NOT: [CatogorySubscriptionWhereInput!]
+}
+
+input CatogoryUpdateInput {
+  title: String
+  description: String
+  books: BookUpdateManyWithoutCatogoryInput
+  isListed: Boolean
+  status: Int
+}
+
+input CatogoryUpdateManyDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CatogoryUpdateManyMutationInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CatogoryUpdateManyWithoutBooksInput {
+  create: [CatogoryCreateWithoutBooksInput!]
+  delete: [CatogoryWhereUniqueInput!]
+  connect: [CatogoryWhereUniqueInput!]
+  set: [CatogoryWhereUniqueInput!]
+  disconnect: [CatogoryWhereUniqueInput!]
+  update: [CatogoryUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [CatogoryUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [CatogoryScalarWhereInput!]
+  updateMany: [CatogoryUpdateManyWithWhereNestedInput!]
+}
+
+input CatogoryUpdateManyWithWhereNestedInput {
+  where: CatogoryScalarWhereInput!
+  data: CatogoryUpdateManyDataInput!
+}
+
+input CatogoryUpdateWithoutBooksDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CatogoryUpdateWithWhereUniqueWithoutBooksInput {
+  where: CatogoryWhereUniqueInput!
+  data: CatogoryUpdateWithoutBooksDataInput!
+}
+
+input CatogoryUpsertWithWhereUniqueWithoutBooksInput {
+  where: CatogoryWhereUniqueInput!
+  update: CatogoryUpdateWithoutBooksDataInput!
+  create: CatogoryCreateWithoutBooksInput!
+}
+
+input CatogoryWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CatogoryWhereInput!]
+  OR: [CatogoryWhereInput!]
+  NOT: [CatogoryWhereInput!]
+}
+
+input CatogoryWhereUniqueInput {
+  id: ID
+}
+
+type ClassRoom {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type ClassRoomConnection {
+  pageInfo: PageInfo!
+  edges: [ClassRoomEdge]!
+  aggregate: AggregateClassRoom!
+}
+
+input ClassRoomCreateInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: BookCreateManyWithoutClassRoomInput
+}
+
+input ClassRoomCreateManyWithoutBooksInput {
+  create: [ClassRoomCreateWithoutBooksInput!]
+  connect: [ClassRoomWhereUniqueInput!]
+}
+
+input ClassRoomCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+}
+
+type ClassRoomEdge {
+  node: ClassRoom!
+  cursor: String!
+}
+
+enum ClassRoomOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  slug_ASC
+  slug_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type ClassRoomPreviousValues {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input ClassRoomScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ClassRoomScalarWhereInput!]
+  OR: [ClassRoomScalarWhereInput!]
+  NOT: [ClassRoomScalarWhereInput!]
+}
+
+type ClassRoomSubscriptionPayload {
+  mutation: MutationType!
+  node: ClassRoom
+  updatedFields: [String!]
+  previousValues: ClassRoomPreviousValues
+}
+
+input ClassRoomSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: ClassRoomWhereInput
+  AND: [ClassRoomSubscriptionWhereInput!]
+  OR: [ClassRoomSubscriptionWhereInput!]
+  NOT: [ClassRoomSubscriptionWhereInput!]
+}
+
+input ClassRoomUpdateInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+  books: BookUpdateManyWithoutClassRoomInput
+}
+
+input ClassRoomUpdateManyDataInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input ClassRoomUpdateManyMutationInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input ClassRoomUpdateManyWithoutBooksInput {
+  create: [ClassRoomCreateWithoutBooksInput!]
+  delete: [ClassRoomWhereUniqueInput!]
+  connect: [ClassRoomWhereUniqueInput!]
+  set: [ClassRoomWhereUniqueInput!]
+  disconnect: [ClassRoomWhereUniqueInput!]
+  update: [ClassRoomUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [ClassRoomUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [ClassRoomScalarWhereInput!]
+  updateMany: [ClassRoomUpdateManyWithWhereNestedInput!]
+}
+
+input ClassRoomUpdateManyWithWhereNestedInput {
+  where: ClassRoomScalarWhereInput!
+  data: ClassRoomUpdateManyDataInput!
+}
+
+input ClassRoomUpdateWithoutBooksDataInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input ClassRoomUpdateWithWhereUniqueWithoutBooksInput {
+  where: ClassRoomWhereUniqueInput!
+  data: ClassRoomUpdateWithoutBooksDataInput!
+}
+
+input ClassRoomUpsertWithWhereUniqueWithoutBooksInput {
+  where: ClassRoomWhereUniqueInput!
+  update: ClassRoomUpdateWithoutBooksDataInput!
+  create: ClassRoomCreateWithoutBooksInput!
+}
+
+input ClassRoomWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [ClassRoomWhereInput!]
+  OR: [ClassRoomWhereInput!]
+  NOT: [ClassRoomWhereInput!]
+}
+
+input ClassRoomWhereUniqueInput {
+  id: ID
+}
+
+type Couress {
+  id: ID!
+  title: String!
+  description: String
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type CouressConnection {
+  pageInfo: PageInfo!
+  edges: [CouressEdge]!
+  aggregate: AggregateCouress!
+}
+
+input CouressCreateInput {
+  id: ID
+  title: String!
+  description: String
+  books: BookCreateManyWithoutCouressInput
+  isListed: Boolean!
+  status: Int!
+}
+
+input CouressCreateManyWithoutBooksInput {
+  create: [CouressCreateWithoutBooksInput!]
+  connect: [CouressWhereUniqueInput!]
+}
+
+input CouressCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+}
+
+type CouressEdge {
+  node: Couress!
+  cursor: String!
+}
+
+enum CouressOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type CouressPreviousValues {
+  id: ID!
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CouressScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CouressScalarWhereInput!]
+  OR: [CouressScalarWhereInput!]
+  NOT: [CouressScalarWhereInput!]
+}
+
+type CouressSubscriptionPayload {
+  mutation: MutationType!
+  node: Couress
+  updatedFields: [String!]
+  previousValues: CouressPreviousValues
+}
+
+input CouressSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: CouressWhereInput
+  AND: [CouressSubscriptionWhereInput!]
+  OR: [CouressSubscriptionWhereInput!]
+  NOT: [CouressSubscriptionWhereInput!]
+}
+
+input CouressUpdateInput {
+  title: String
+  description: String
+  books: BookUpdateManyWithoutCouressInput
+  isListed: Boolean
+  status: Int
+}
+
+input CouressUpdateManyDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CouressUpdateManyMutationInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CouressUpdateManyWithoutBooksInput {
+  create: [CouressCreateWithoutBooksInput!]
+  delete: [CouressWhereUniqueInput!]
+  connect: [CouressWhereUniqueInput!]
+  set: [CouressWhereUniqueInput!]
+  disconnect: [CouressWhereUniqueInput!]
+  update: [CouressUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [CouressUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [CouressScalarWhereInput!]
+  updateMany: [CouressUpdateManyWithWhereNestedInput!]
+}
+
+input CouressUpdateManyWithWhereNestedInput {
+  where: CouressScalarWhereInput!
+  data: CouressUpdateManyDataInput!
+}
+
+input CouressUpdateWithoutBooksDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input CouressUpdateWithWhereUniqueWithoutBooksInput {
+  where: CouressWhereUniqueInput!
+  data: CouressUpdateWithoutBooksDataInput!
+}
+
+input CouressUpsertWithWhereUniqueWithoutBooksInput {
+  where: CouressWhereUniqueInput!
+  update: CouressUpdateWithoutBooksDataInput!
+  create: CouressCreateWithoutBooksInput!
+}
+
+input CouressWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [CouressWhereInput!]
+  OR: [CouressWhereInput!]
+  NOT: [CouressWhereInput!]
+}
+
+input CouressWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+scalar Long
+
+type Mutation {
+  createAuthor(data: AuthorCreateInput!): Author!
+  updateAuthor(data: AuthorUpdateInput!, where: AuthorWhereUniqueInput!): Author
+  updateManyAuthors(data: AuthorUpdateManyMutationInput!, where: AuthorWhereInput): BatchPayload!
+  upsertAuthor(where: AuthorWhereUniqueInput!, create: AuthorCreateInput!, update: AuthorUpdateInput!): Author!
+  deleteAuthor(where: AuthorWhereUniqueInput!): Author
+  deleteManyAuthors(where: AuthorWhereInput): BatchPayload!
+  createBook(data: BookCreateInput!): Book!
+  updateBook(data: BookUpdateInput!, where: BookWhereUniqueInput!): Book
+  updateManyBooks(data: BookUpdateManyMutationInput!, where: BookWhereInput): BatchPayload!
+  upsertBook(where: BookWhereUniqueInput!, create: BookCreateInput!, update: BookUpdateInput!): Book!
+  deleteBook(where: BookWhereUniqueInput!): Book
+  deleteManyBooks(where: BookWhereInput): BatchPayload!
+  createBookTest(data: BookTestCreateInput!): BookTest!
+  updateBookTest(data: BookTestUpdateInput!, where: BookTestWhereUniqueInput!): BookTest
+  updateManyBookTests(data: BookTestUpdateManyMutationInput!, where: BookTestWhereInput): BatchPayload!
+  upsertBookTest(where: BookTestWhereUniqueInput!, create: BookTestCreateInput!, update: BookTestUpdateInput!): BookTest!
+  deleteBookTest(where: BookTestWhereUniqueInput!): BookTest
+  deleteManyBookTests(where: BookTestWhereInput): BatchPayload!
+  createCatogory(data: CatogoryCreateInput!): Catogory!
+  updateCatogory(data: CatogoryUpdateInput!, where: CatogoryWhereUniqueInput!): Catogory
+  updateManyCatogories(data: CatogoryUpdateManyMutationInput!, where: CatogoryWhereInput): BatchPayload!
+  upsertCatogory(where: CatogoryWhereUniqueInput!, create: CatogoryCreateInput!, update: CatogoryUpdateInput!): Catogory!
+  deleteCatogory(where: CatogoryWhereUniqueInput!): Catogory
+  deleteManyCatogories(where: CatogoryWhereInput): BatchPayload!
+  createClassRoom(data: ClassRoomCreateInput!): ClassRoom!
+  updateClassRoom(data: ClassRoomUpdateInput!, where: ClassRoomWhereUniqueInput!): ClassRoom
+  updateManyClassRooms(data: ClassRoomUpdateManyMutationInput!, where: ClassRoomWhereInput): BatchPayload!
+  upsertClassRoom(where: ClassRoomWhereUniqueInput!, create: ClassRoomCreateInput!, update: ClassRoomUpdateInput!): ClassRoom!
+  deleteClassRoom(where: ClassRoomWhereUniqueInput!): ClassRoom
+  deleteManyClassRooms(where: ClassRoomWhereInput): BatchPayload!
+  createCouress(data: CouressCreateInput!): Couress!
+  updateCouress(data: CouressUpdateInput!, where: CouressWhereUniqueInput!): Couress
+  updateManyCouresses(data: CouressUpdateManyMutationInput!, where: CouressWhereInput): BatchPayload!
+  upsertCouress(where: CouressWhereUniqueInput!, create: CouressCreateInput!, update: CouressUpdateInput!): Couress!
+  deleteCouress(where: CouressWhereUniqueInput!): Couress
+  deleteManyCouresses(where: CouressWhereInput): BatchPayload!
+  createPubliserYear(data: PubliserYearCreateInput!): PubliserYear!
+  updatePubliserYear(data: PubliserYearUpdateInput!, where: PubliserYearWhereUniqueInput!): PubliserYear
+  updateManyPubliserYears(data: PubliserYearUpdateManyMutationInput!, where: PubliserYearWhereInput): BatchPayload!
+  upsertPubliserYear(where: PubliserYearWhereUniqueInput!, create: PubliserYearCreateInput!, update: PubliserYearUpdateInput!): PubliserYear!
+  deletePubliserYear(where: PubliserYearWhereUniqueInput!): PubliserYear
+  deleteManyPubliserYears(where: PubliserYearWhereInput): BatchPayload!
+  createPublisher(data: PublisherCreateInput!): Publisher!
+  updatePublisher(data: PublisherUpdateInput!, where: PublisherWhereUniqueInput!): Publisher
+  updateManyPublishers(data: PublisherUpdateManyMutationInput!, where: PublisherWhereInput): BatchPayload!
+  upsertPublisher(where: PublisherWhereUniqueInput!, create: PublisherCreateInput!, update: PublisherUpdateInput!): Publisher!
+  deletePublisher(where: PublisherWhereUniqueInput!): Publisher
+  deleteManyPublishers(where: PublisherWhereInput): BatchPayload!
+  createQuestions(data: QuestionsCreateInput!): Questions!
+  updateQuestions(data: QuestionsUpdateInput!, where: QuestionsWhereUniqueInput!): Questions
+  updateManyQuestionses(data: QuestionsUpdateManyMutationInput!, where: QuestionsWhereInput): BatchPayload!
+  upsertQuestions(where: QuestionsWhereUniqueInput!, create: QuestionsCreateInput!, update: QuestionsUpdateInput!): Questions!
+  deleteQuestions(where: QuestionsWhereUniqueInput!): Questions
+  deleteManyQuestionses(where: QuestionsWhereInput): BatchPayload!
+  createSubject(data: SubjectCreateInput!): Subject!
+  updateSubject(data: SubjectUpdateInput!, where: SubjectWhereUniqueInput!): Subject
+  updateManySubjects(data: SubjectUpdateManyMutationInput!, where: SubjectWhereInput): BatchPayload!
+  upsertSubject(where: SubjectWhereUniqueInput!, create: SubjectCreateInput!, update: SubjectUpdateInput!): Subject!
+  deleteSubject(where: SubjectWhereUniqueInput!): Subject
+  deleteManySubjects(where: SubjectWhereInput): BatchPayload!
+  createVedio(data: VedioCreateInput!): Vedio!
+  updateVedio(data: VedioUpdateInput!, where: VedioWhereUniqueInput!): Vedio
+  updateManyVedios(data: VedioUpdateManyMutationInput!, where: VedioWhereInput): BatchPayload!
+  upsertVedio(where: VedioWhereUniqueInput!, create: VedioCreateInput!, update: VedioUpdateInput!): Vedio!
+  deleteVedio(where: VedioWhereUniqueInput!): Vedio
+  deleteManyVedios(where: VedioWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+interface Node {
+  id: ID!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
+type PubliserYear {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PubliserYearConnection {
+  pageInfo: PageInfo!
+  edges: [PubliserYearEdge]!
+  aggregate: AggregatePubliserYear!
+}
+
+input PubliserYearCreateInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: BookCreateManyWithoutPubliserYearInput
+}
+
+input PubliserYearCreateManyWithoutBooksInput {
+  create: [PubliserYearCreateWithoutBooksInput!]
+  connect: [PubliserYearWhereUniqueInput!]
+}
+
+input PubliserYearCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+}
+
+type PubliserYearEdge {
+  node: PubliserYear!
+  cursor: String!
+}
+
+enum PubliserYearOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  slug_ASC
+  slug_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PubliserYearPreviousValues {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PubliserYearScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PubliserYearScalarWhereInput!]
+  OR: [PubliserYearScalarWhereInput!]
+  NOT: [PubliserYearScalarWhereInput!]
+}
+
+type PubliserYearSubscriptionPayload {
+  mutation: MutationType!
+  node: PubliserYear
+  updatedFields: [String!]
+  previousValues: PubliserYearPreviousValues
+}
+
+input PubliserYearSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PubliserYearWhereInput
+  AND: [PubliserYearSubscriptionWhereInput!]
+  OR: [PubliserYearSubscriptionWhereInput!]
+  NOT: [PubliserYearSubscriptionWhereInput!]
+}
+
+input PubliserYearUpdateInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+  books: BookUpdateManyWithoutPubliserYearInput
+}
+
+input PubliserYearUpdateManyDataInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input PubliserYearUpdateManyMutationInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input PubliserYearUpdateManyWithoutBooksInput {
+  create: [PubliserYearCreateWithoutBooksInput!]
+  delete: [PubliserYearWhereUniqueInput!]
+  connect: [PubliserYearWhereUniqueInput!]
+  set: [PubliserYearWhereUniqueInput!]
+  disconnect: [PubliserYearWhereUniqueInput!]
+  update: [PubliserYearUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [PubliserYearUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [PubliserYearScalarWhereInput!]
+  updateMany: [PubliserYearUpdateManyWithWhereNestedInput!]
+}
+
+input PubliserYearUpdateManyWithWhereNestedInput {
+  where: PubliserYearScalarWhereInput!
+  data: PubliserYearUpdateManyDataInput!
+}
+
+input PubliserYearUpdateWithoutBooksDataInput {
+  title: String
+  slug: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input PubliserYearUpdateWithWhereUniqueWithoutBooksInput {
+  where: PubliserYearWhereUniqueInput!
+  data: PubliserYearUpdateWithoutBooksDataInput!
+}
+
+input PubliserYearUpsertWithWhereUniqueWithoutBooksInput {
+  where: PubliserYearWhereUniqueInput!
+  update: PubliserYearUpdateWithoutBooksDataInput!
+  create: PubliserYearCreateWithoutBooksInput!
+}
+
+input PubliserYearWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PubliserYearWhereInput!]
+  OR: [PubliserYearWhereInput!]
+  NOT: [PubliserYearWhereInput!]
+}
+
+input PubliserYearWhereUniqueInput {
+  id: ID
+}
+
+type Publisher {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  order: Int!
+  isListed: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type PublisherConnection {
+  pageInfo: PageInfo!
+  edges: [PublisherEdge]!
+  aggregate: AggregatePublisher!
+}
+
+input PublisherCreateInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books: BookCreateManyWithoutPublisherInput
+  order: Int!
+  isListed: Boolean!
+}
+
+input PublisherCreateManyWithoutBooksInput {
+  create: [PublisherCreateWithoutBooksInput!]
+  connect: [PublisherWhereUniqueInput!]
+}
+
+input PublisherCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  order: Int!
+  isListed: Boolean!
+}
+
+type PublisherEdge {
+  node: Publisher!
+  cursor: String!
+}
+
+enum PublisherOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  slug_ASC
+  slug_DESC
+  description_ASC
+  description_DESC
+  phoneNumber_ASC
+  phoneNumber_DESC
+  address_ASC
+  address_DESC
+  order_ASC
+  order_DESC
+  isListed_ASC
+  isListed_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type PublisherPreviousValues {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  order: Int!
+  isListed: Boolean!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input PublisherScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  phoneNumber: String
+  phoneNumber_not: String
+  phoneNumber_in: [String!]
+  phoneNumber_not_in: [String!]
+  phoneNumber_lt: String
+  phoneNumber_lte: String
+  phoneNumber_gt: String
+  phoneNumber_gte: String
+  phoneNumber_contains: String
+  phoneNumber_not_contains: String
+  phoneNumber_starts_with: String
+  phoneNumber_not_starts_with: String
+  phoneNumber_ends_with: String
+  phoneNumber_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
+  isListed: Boolean
+  isListed_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PublisherScalarWhereInput!]
+  OR: [PublisherScalarWhereInput!]
+  NOT: [PublisherScalarWhereInput!]
+}
+
+type PublisherSubscriptionPayload {
+  mutation: MutationType!
+  node: Publisher
+  updatedFields: [String!]
+  previousValues: PublisherPreviousValues
+}
+
+input PublisherSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: PublisherWhereInput
+  AND: [PublisherSubscriptionWhereInput!]
+  OR: [PublisherSubscriptionWhereInput!]
+  NOT: [PublisherSubscriptionWhereInput!]
+}
+
+input PublisherUpdateInput {
+  title: String
+  slug: String
+  description: String
+  phoneNumber: String
+  address: String
+  books: BookUpdateManyWithoutPublisherInput
+  order: Int
+  isListed: Boolean
+}
+
+input PublisherUpdateManyDataInput {
+  title: String
+  slug: String
+  description: String
+  phoneNumber: String
+  address: String
+  order: Int
+  isListed: Boolean
+}
+
+input PublisherUpdateManyMutationInput {
+  title: String
+  slug: String
+  description: String
+  phoneNumber: String
+  address: String
+  order: Int
+  isListed: Boolean
+}
+
+input PublisherUpdateManyWithoutBooksInput {
+  create: [PublisherCreateWithoutBooksInput!]
+  delete: [PublisherWhereUniqueInput!]
+  connect: [PublisherWhereUniqueInput!]
+  set: [PublisherWhereUniqueInput!]
+  disconnect: [PublisherWhereUniqueInput!]
+  update: [PublisherUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [PublisherUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [PublisherScalarWhereInput!]
+  updateMany: [PublisherUpdateManyWithWhereNestedInput!]
+}
+
+input PublisherUpdateManyWithWhereNestedInput {
+  where: PublisherScalarWhereInput!
+  data: PublisherUpdateManyDataInput!
+}
+
+input PublisherUpdateWithoutBooksDataInput {
+  title: String
+  slug: String
+  description: String
+  phoneNumber: String
+  address: String
+  order: Int
+  isListed: Boolean
+}
+
+input PublisherUpdateWithWhereUniqueWithoutBooksInput {
+  where: PublisherWhereUniqueInput!
+  data: PublisherUpdateWithoutBooksDataInput!
+}
+
+input PublisherUpsertWithWhereUniqueWithoutBooksInput {
+  where: PublisherWhereUniqueInput!
+  update: PublisherUpdateWithoutBooksDataInput!
+  create: PublisherCreateWithoutBooksInput!
+}
+
+input PublisherWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  slug: String
+  slug_not: String
+  slug_in: [String!]
+  slug_not_in: [String!]
+  slug_lt: String
+  slug_lte: String
+  slug_gt: String
+  slug_gte: String
+  slug_contains: String
+  slug_not_contains: String
+  slug_starts_with: String
+  slug_not_starts_with: String
+  slug_ends_with: String
+  slug_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  phoneNumber: String
+  phoneNumber_not: String
+  phoneNumber_in: [String!]
+  phoneNumber_not_in: [String!]
+  phoneNumber_lt: String
+  phoneNumber_lte: String
+  phoneNumber_gt: String
+  phoneNumber_gte: String
+  phoneNumber_contains: String
+  phoneNumber_not_contains: String
+  phoneNumber_starts_with: String
+  phoneNumber_not_starts_with: String
+  phoneNumber_ends_with: String
+  phoneNumber_not_ends_with: String
+  address: String
+  address_not: String
+  address_in: [String!]
+  address_not_in: [String!]
+  address_lt: String
+  address_lte: String
+  address_gt: String
+  address_gte: String
+  address_contains: String
+  address_not_contains: String
+  address_starts_with: String
+  address_not_starts_with: String
+  address_ends_with: String
+  address_not_ends_with: String
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
+  isListed: Boolean
+  isListed_not: Boolean
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [PublisherWhereInput!]
+  OR: [PublisherWhereInput!]
+  NOT: [PublisherWhereInput!]
+}
+
+input PublisherWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  author(where: AuthorWhereUniqueInput!): Author
+  authors(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author]!
+  authorsConnection(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AuthorConnection!
+  book(where: BookWhereUniqueInput!): Book
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book]!
+  booksConnection(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookConnection!
+  bookTest(where: BookTestWhereUniqueInput!): BookTest
+  bookTests(where: BookTestWhereInput, orderBy: BookTestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [BookTest]!
+  bookTestsConnection(where: BookTestWhereInput, orderBy: BookTestOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): BookTestConnection!
+  catogory(where: CatogoryWhereUniqueInput!): Catogory
+  catogories(where: CatogoryWhereInput, orderBy: CatogoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Catogory]!
+  catogoriesConnection(where: CatogoryWhereInput, orderBy: CatogoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CatogoryConnection!
+  classRoom(where: ClassRoomWhereUniqueInput!): ClassRoom
+  classRooms(where: ClassRoomWhereInput, orderBy: ClassRoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ClassRoom]!
+  classRoomsConnection(where: ClassRoomWhereInput, orderBy: ClassRoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ClassRoomConnection!
+  couress(where: CouressWhereUniqueInput!): Couress
+  couresses(where: CouressWhereInput, orderBy: CouressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Couress]!
+  couressesConnection(where: CouressWhereInput, orderBy: CouressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CouressConnection!
+  publiserYear(where: PubliserYearWhereUniqueInput!): PubliserYear
+  publiserYears(where: PubliserYearWhereInput, orderBy: PubliserYearOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PubliserYear]!
+  publiserYearsConnection(where: PubliserYearWhereInput, orderBy: PubliserYearOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PubliserYearConnection!
+  publisher(where: PublisherWhereUniqueInput!): Publisher
+  publishers(where: PublisherWhereInput, orderBy: PublisherOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Publisher]!
+  publishersConnection(where: PublisherWhereInput, orderBy: PublisherOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PublisherConnection!
+  questions(where: QuestionsWhereUniqueInput!): Questions
+  questionses(where: QuestionsWhereInput, orderBy: QuestionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Questions]!
+  questionsesConnection(where: QuestionsWhereInput, orderBy: QuestionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): QuestionsConnection!
+  subject(where: SubjectWhereUniqueInput!): Subject
+  subjects(where: SubjectWhereInput, orderBy: SubjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Subject]!
+  subjectsConnection(where: SubjectWhereInput, orderBy: SubjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): SubjectConnection!
+  vedio(where: VedioWhereUniqueInput!): Vedio
+  vedios(where: VedioWhereInput, orderBy: VedioOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vedio]!
+  vediosConnection(where: VedioWhereInput, orderBy: VedioOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): VedioConnection!
+  node(id: ID!): Node
+}
+
+type Questions {
+  id: ID!
+  title: String!
+  videos(where: VedioWhereInput, orderBy: VedioOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vedio!]
+  correctAnswer: String
+  bookTest: BookTest!
+  status: Int!
+}
+
+type QuestionsConnection {
+  pageInfo: PageInfo!
+  edges: [QuestionsEdge]!
+  aggregate: AggregateQuestions!
+}
+
+input QuestionsCreateInput {
+  id: ID
+  title: String!
+  videos: VedioCreateManyWithoutQuestionsInput
+  correctAnswer: String
+  bookTest: BookTestCreateOneWithoutQuestionsInput!
+  status: Int!
+}
+
+input QuestionsCreateManyWithoutBookTestInput {
+  create: [QuestionsCreateWithoutBookTestInput!]
+  connect: [QuestionsWhereUniqueInput!]
+}
+
+input QuestionsCreateManyWithoutVideosInput {
+  create: [QuestionsCreateWithoutVideosInput!]
+  connect: [QuestionsWhereUniqueInput!]
+}
+
+input QuestionsCreateWithoutBookTestInput {
+  id: ID
+  title: String!
+  videos: VedioCreateManyWithoutQuestionsInput
+  correctAnswer: String
+  status: Int!
+}
+
+input QuestionsCreateWithoutVideosInput {
+  id: ID
+  title: String!
+  correctAnswer: String
+  bookTest: BookTestCreateOneWithoutQuestionsInput!
+  status: Int!
+}
+
+type QuestionsEdge {
+  node: Questions!
+  cursor: String!
+}
+
+enum QuestionsOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  correctAnswer_ASC
+  correctAnswer_DESC
+  status_ASC
+  status_DESC
+}
+
+type QuestionsPreviousValues {
+  id: ID!
+  title: String!
+  correctAnswer: String
+  status: Int!
+}
+
+input QuestionsScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  correctAnswer: String
+  correctAnswer_not: String
+  correctAnswer_in: [String!]
+  correctAnswer_not_in: [String!]
+  correctAnswer_lt: String
+  correctAnswer_lte: String
+  correctAnswer_gt: String
+  correctAnswer_gte: String
+  correctAnswer_contains: String
+  correctAnswer_not_contains: String
+  correctAnswer_starts_with: String
+  correctAnswer_not_starts_with: String
+  correctAnswer_ends_with: String
+  correctAnswer_not_ends_with: String
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  AND: [QuestionsScalarWhereInput!]
+  OR: [QuestionsScalarWhereInput!]
+  NOT: [QuestionsScalarWhereInput!]
+}
+
+type QuestionsSubscriptionPayload {
+  mutation: MutationType!
+  node: Questions
+  updatedFields: [String!]
+  previousValues: QuestionsPreviousValues
+}
+
+input QuestionsSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: QuestionsWhereInput
+  AND: [QuestionsSubscriptionWhereInput!]
+  OR: [QuestionsSubscriptionWhereInput!]
+  NOT: [QuestionsSubscriptionWhereInput!]
+}
+
+input QuestionsUpdateInput {
+  title: String
+  videos: VedioUpdateManyWithoutQuestionsInput
+  correctAnswer: String
+  bookTest: BookTestUpdateOneRequiredWithoutQuestionsInput
+  status: Int
+}
+
+input QuestionsUpdateManyDataInput {
+  title: String
+  correctAnswer: String
+  status: Int
+}
+
+input QuestionsUpdateManyMutationInput {
+  title: String
+  correctAnswer: String
+  status: Int
+}
+
+input QuestionsUpdateManyWithoutBookTestInput {
+  create: [QuestionsCreateWithoutBookTestInput!]
+  delete: [QuestionsWhereUniqueInput!]
+  connect: [QuestionsWhereUniqueInput!]
+  set: [QuestionsWhereUniqueInput!]
+  disconnect: [QuestionsWhereUniqueInput!]
+  update: [QuestionsUpdateWithWhereUniqueWithoutBookTestInput!]
+  upsert: [QuestionsUpsertWithWhereUniqueWithoutBookTestInput!]
+  deleteMany: [QuestionsScalarWhereInput!]
+  updateMany: [QuestionsUpdateManyWithWhereNestedInput!]
+}
+
+input QuestionsUpdateManyWithoutVideosInput {
+  create: [QuestionsCreateWithoutVideosInput!]
+  delete: [QuestionsWhereUniqueInput!]
+  connect: [QuestionsWhereUniqueInput!]
+  set: [QuestionsWhereUniqueInput!]
+  disconnect: [QuestionsWhereUniqueInput!]
+  update: [QuestionsUpdateWithWhereUniqueWithoutVideosInput!]
+  upsert: [QuestionsUpsertWithWhereUniqueWithoutVideosInput!]
+  deleteMany: [QuestionsScalarWhereInput!]
+  updateMany: [QuestionsUpdateManyWithWhereNestedInput!]
+}
+
+input QuestionsUpdateManyWithWhereNestedInput {
+  where: QuestionsScalarWhereInput!
+  data: QuestionsUpdateManyDataInput!
+}
+
+input QuestionsUpdateWithoutBookTestDataInput {
+  title: String
+  videos: VedioUpdateManyWithoutQuestionsInput
+  correctAnswer: String
+  status: Int
+}
+
+input QuestionsUpdateWithoutVideosDataInput {
+  title: String
+  correctAnswer: String
+  bookTest: BookTestUpdateOneRequiredWithoutQuestionsInput
+  status: Int
+}
+
+input QuestionsUpdateWithWhereUniqueWithoutBookTestInput {
+  where: QuestionsWhereUniqueInput!
+  data: QuestionsUpdateWithoutBookTestDataInput!
+}
+
+input QuestionsUpdateWithWhereUniqueWithoutVideosInput {
+  where: QuestionsWhereUniqueInput!
+  data: QuestionsUpdateWithoutVideosDataInput!
+}
+
+input QuestionsUpsertWithWhereUniqueWithoutBookTestInput {
+  where: QuestionsWhereUniqueInput!
+  update: QuestionsUpdateWithoutBookTestDataInput!
+  create: QuestionsCreateWithoutBookTestInput!
+}
+
+input QuestionsUpsertWithWhereUniqueWithoutVideosInput {
+  where: QuestionsWhereUniqueInput!
+  update: QuestionsUpdateWithoutVideosDataInput!
+  create: QuestionsCreateWithoutVideosInput!
+}
+
+input QuestionsWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  videos_every: VedioWhereInput
+  videos_some: VedioWhereInput
+  videos_none: VedioWhereInput
+  correctAnswer: String
+  correctAnswer_not: String
+  correctAnswer_in: [String!]
+  correctAnswer_not_in: [String!]
+  correctAnswer_lt: String
+  correctAnswer_lte: String
+  correctAnswer_gt: String
+  correctAnswer_gte: String
+  correctAnswer_contains: String
+  correctAnswer_not_contains: String
+  correctAnswer_starts_with: String
+  correctAnswer_not_starts_with: String
+  correctAnswer_ends_with: String
+  correctAnswer_not_ends_with: String
+  bookTest: BookTestWhereInput
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  AND: [QuestionsWhereInput!]
+  OR: [QuestionsWhereInput!]
+  NOT: [QuestionsWhereInput!]
+}
+
+input QuestionsWhereUniqueInput {
+  id: ID
+}
+
+type Subject {
+  id: ID!
+  title: String!
+  description: String
+  books(where: BookWhereInput, orderBy: BookOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Book!]
+  isListed: Boolean!
+  status: Int!
+  videos(where: VedioWhereInput, orderBy: VedioOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Vedio!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type SubjectConnection {
+  pageInfo: PageInfo!
+  edges: [SubjectEdge]!
+  aggregate: AggregateSubject!
+}
+
+input SubjectCreateInput {
+  id: ID
+  title: String!
+  description: String
+  books: BookCreateManyWithoutSubjectsInput
+  isListed: Boolean!
+  status: Int!
+  videos: VedioCreateManyWithoutSubjectsInput
+}
+
+input SubjectCreateManyWithoutBooksInput {
+  create: [SubjectCreateWithoutBooksInput!]
+  connect: [SubjectWhereUniqueInput!]
+}
+
+input SubjectCreateManyWithoutVideosInput {
+  create: [SubjectCreateWithoutVideosInput!]
+  connect: [SubjectWhereUniqueInput!]
+}
+
+input SubjectCreateWithoutBooksInput {
+  id: ID
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  videos: VedioCreateManyWithoutSubjectsInput
+}
+
+input SubjectCreateWithoutVideosInput {
+  id: ID
+  title: String!
+  description: String
+  books: BookCreateManyWithoutSubjectsInput
+  isListed: Boolean!
+  status: Int!
+}
+
+type SubjectEdge {
+  node: Subject!
+  cursor: String!
+}
+
+enum SubjectOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  description_ASC
+  description_DESC
+  isListed_ASC
+  isListed_DESC
+  status_ASC
+  status_DESC
+  createdAt_ASC
+  createdAt_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+}
+
+type SubjectPreviousValues {
+  id: ID!
+  title: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input SubjectScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [SubjectScalarWhereInput!]
+  OR: [SubjectScalarWhereInput!]
+  NOT: [SubjectScalarWhereInput!]
+}
+
+type SubjectSubscriptionPayload {
+  mutation: MutationType!
+  node: Subject
+  updatedFields: [String!]
+  previousValues: SubjectPreviousValues
+}
+
+input SubjectSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: SubjectWhereInput
+  AND: [SubjectSubscriptionWhereInput!]
+  OR: [SubjectSubscriptionWhereInput!]
+  NOT: [SubjectSubscriptionWhereInput!]
+}
+
+input SubjectUpdateInput {
+  title: String
+  description: String
+  books: BookUpdateManyWithoutSubjectsInput
+  isListed: Boolean
+  status: Int
+  videos: VedioUpdateManyWithoutSubjectsInput
+}
+
+input SubjectUpdateManyDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input SubjectUpdateManyMutationInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+}
+
+input SubjectUpdateManyWithoutBooksInput {
+  create: [SubjectCreateWithoutBooksInput!]
+  delete: [SubjectWhereUniqueInput!]
+  connect: [SubjectWhereUniqueInput!]
+  set: [SubjectWhereUniqueInput!]
+  disconnect: [SubjectWhereUniqueInput!]
+  update: [SubjectUpdateWithWhereUniqueWithoutBooksInput!]
+  upsert: [SubjectUpsertWithWhereUniqueWithoutBooksInput!]
+  deleteMany: [SubjectScalarWhereInput!]
+  updateMany: [SubjectUpdateManyWithWhereNestedInput!]
+}
+
+input SubjectUpdateManyWithoutVideosInput {
+  create: [SubjectCreateWithoutVideosInput!]
+  delete: [SubjectWhereUniqueInput!]
+  connect: [SubjectWhereUniqueInput!]
+  set: [SubjectWhereUniqueInput!]
+  disconnect: [SubjectWhereUniqueInput!]
+  update: [SubjectUpdateWithWhereUniqueWithoutVideosInput!]
+  upsert: [SubjectUpsertWithWhereUniqueWithoutVideosInput!]
+  deleteMany: [SubjectScalarWhereInput!]
+  updateMany: [SubjectUpdateManyWithWhereNestedInput!]
+}
+
+input SubjectUpdateManyWithWhereNestedInput {
+  where: SubjectScalarWhereInput!
+  data: SubjectUpdateManyDataInput!
+}
+
+input SubjectUpdateWithoutBooksDataInput {
+  title: String
+  description: String
+  isListed: Boolean
+  status: Int
+  videos: VedioUpdateManyWithoutSubjectsInput
+}
+
+input SubjectUpdateWithoutVideosDataInput {
+  title: String
+  description: String
+  books: BookUpdateManyWithoutSubjectsInput
+  isListed: Boolean
+  status: Int
+}
+
+input SubjectUpdateWithWhereUniqueWithoutBooksInput {
+  where: SubjectWhereUniqueInput!
+  data: SubjectUpdateWithoutBooksDataInput!
+}
+
+input SubjectUpdateWithWhereUniqueWithoutVideosInput {
+  where: SubjectWhereUniqueInput!
+  data: SubjectUpdateWithoutVideosDataInput!
+}
+
+input SubjectUpsertWithWhereUniqueWithoutBooksInput {
+  where: SubjectWhereUniqueInput!
+  update: SubjectUpdateWithoutBooksDataInput!
+  create: SubjectCreateWithoutBooksInput!
+}
+
+input SubjectUpsertWithWhereUniqueWithoutVideosInput {
+  where: SubjectWhereUniqueInput!
+  update: SubjectUpdateWithoutVideosDataInput!
+  create: SubjectCreateWithoutVideosInput!
+}
+
+input SubjectWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  description: String
+  description_not: String
+  description_in: [String!]
+  description_not_in: [String!]
+  description_lt: String
+  description_lte: String
+  description_gt: String
+  description_gte: String
+  description_contains: String
+  description_not_contains: String
+  description_starts_with: String
+  description_not_starts_with: String
+  description_ends_with: String
+  description_not_ends_with: String
+  books_every: BookWhereInput
+  books_some: BookWhereInput
+  books_none: BookWhereInput
+  isListed: Boolean
+  isListed_not: Boolean
+  status: Int
+  status_not: Int
+  status_in: [Int!]
+  status_not_in: [Int!]
+  status_lt: Int
+  status_lte: Int
+  status_gt: Int
+  status_gte: Int
+  videos_every: VedioWhereInput
+  videos_some: VedioWhereInput
+  videos_none: VedioWhereInput
+  createdAt: DateTime
+  createdAt_not: DateTime
+  createdAt_in: [DateTime!]
+  createdAt_not_in: [DateTime!]
+  createdAt_lt: DateTime
+  createdAt_lte: DateTime
+  createdAt_gt: DateTime
+  createdAt_gte: DateTime
+  updatedAt: DateTime
+  updatedAt_not: DateTime
+  updatedAt_in: [DateTime!]
+  updatedAt_not_in: [DateTime!]
+  updatedAt_lt: DateTime
+  updatedAt_lte: DateTime
+  updatedAt_gt: DateTime
+  updatedAt_gte: DateTime
+  AND: [SubjectWhereInput!]
+  OR: [SubjectWhereInput!]
+  NOT: [SubjectWhereInput!]
+}
+
+input SubjectWhereUniqueInput {
+  id: ID
+}
+
+type Subscription {
+  author(where: AuthorSubscriptionWhereInput): AuthorSubscriptionPayload
+  book(where: BookSubscriptionWhereInput): BookSubscriptionPayload
+  bookTest(where: BookTestSubscriptionWhereInput): BookTestSubscriptionPayload
+  catogory(where: CatogorySubscriptionWhereInput): CatogorySubscriptionPayload
+  classRoom(where: ClassRoomSubscriptionWhereInput): ClassRoomSubscriptionPayload
+  couress(where: CouressSubscriptionWhereInput): CouressSubscriptionPayload
+  publiserYear(where: PubliserYearSubscriptionWhereInput): PubliserYearSubscriptionPayload
+  publisher(where: PublisherSubscriptionWhereInput): PublisherSubscriptionPayload
+  questions(where: QuestionsSubscriptionWhereInput): QuestionsSubscriptionPayload
+  subject(where: SubjectSubscriptionWhereInput): SubjectSubscriptionPayload
+  vedio(where: VedioSubscriptionWhereInput): VedioSubscriptionPayload
+}
+
+type Vedio {
+  id: ID!
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects(where: SubjectWhereInput, orderBy: SubjectOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Subject!]
+  questions(where: QuestionsWhereInput, orderBy: QuestionsOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Questions!]
+  order: Int!
+  status: String!
+}
+
+type VedioConnection {
+  pageInfo: PageInfo!
+  edges: [VedioEdge]!
+  aggregate: AggregateVedio!
+}
+
+input VedioCreateInput {
+  id: ID
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects: SubjectCreateManyWithoutVideosInput
+  questions: QuestionsCreateManyWithoutVideosInput
+  order: Int!
+  status: String!
+}
+
+input VedioCreateManyWithoutQuestionsInput {
+  create: [VedioCreateWithoutQuestionsInput!]
+  connect: [VedioWhereUniqueInput!]
+}
+
+input VedioCreateManyWithoutSubjectsInput {
+  create: [VedioCreateWithoutSubjectsInput!]
+  connect: [VedioWhereUniqueInput!]
+}
+
+input VedioCreateWithoutQuestionsInput {
+  id: ID
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects: SubjectCreateManyWithoutVideosInput
+  order: Int!
+  status: String!
+}
+
+input VedioCreateWithoutSubjectsInput {
+  id: ID
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  questions: QuestionsCreateManyWithoutVideosInput
+  order: Int!
+  status: String!
+}
+
+type VedioEdge {
+  node: Vedio!
+  cursor: String!
+}
+
+enum VedioOrderByInput {
+  id_ASC
+  id_DESC
+  title_ASC
+  title_DESC
+  vedioSourse_ASC
+  vedioSourse_DESC
+  vedioUrl_ASC
+  vedioUrl_DESC
+  order_ASC
+  order_DESC
+  status_ASC
+  status_DESC
+}
+
+type VedioPreviousValues {
+  id: ID!
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  order: Int!
+  status: String!
+}
+
+input VedioScalarWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  vedioSourse: String
+  vedioSourse_not: String
+  vedioSourse_in: [String!]
+  vedioSourse_not_in: [String!]
+  vedioSourse_lt: String
+  vedioSourse_lte: String
+  vedioSourse_gt: String
+  vedioSourse_gte: String
+  vedioSourse_contains: String
+  vedioSourse_not_contains: String
+  vedioSourse_starts_with: String
+  vedioSourse_not_starts_with: String
+  vedioSourse_ends_with: String
+  vedioSourse_not_ends_with: String
+  vedioUrl: String
+  vedioUrl_not: String
+  vedioUrl_in: [String!]
+  vedioUrl_not_in: [String!]
+  vedioUrl_lt: String
+  vedioUrl_lte: String
+  vedioUrl_gt: String
+  vedioUrl_gte: String
+  vedioUrl_contains: String
+  vedioUrl_not_contains: String
+  vedioUrl_starts_with: String
+  vedioUrl_not_starts_with: String
+  vedioUrl_ends_with: String
+  vedioUrl_not_ends_with: String
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [VedioScalarWhereInput!]
+  OR: [VedioScalarWhereInput!]
+  NOT: [VedioScalarWhereInput!]
+}
+
+type VedioSubscriptionPayload {
+  mutation: MutationType!
+  node: Vedio
+  updatedFields: [String!]
+  previousValues: VedioPreviousValues
+}
+
+input VedioSubscriptionWhereInput {
+  mutation_in: [MutationType!]
+  updatedFields_contains: String
+  updatedFields_contains_every: [String!]
+  updatedFields_contains_some: [String!]
+  node: VedioWhereInput
+  AND: [VedioSubscriptionWhereInput!]
+  OR: [VedioSubscriptionWhereInput!]
+  NOT: [VedioSubscriptionWhereInput!]
+}
+
+input VedioUpdateInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+  subjects: SubjectUpdateManyWithoutVideosInput
+  questions: QuestionsUpdateManyWithoutVideosInput
+  order: Int
+  status: String
+}
+
+input VedioUpdateManyDataInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+  order: Int
+  status: String
+}
+
+input VedioUpdateManyMutationInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+  order: Int
+  status: String
+}
+
+input VedioUpdateManyWithoutQuestionsInput {
+  create: [VedioCreateWithoutQuestionsInput!]
+  delete: [VedioWhereUniqueInput!]
+  connect: [VedioWhereUniqueInput!]
+  set: [VedioWhereUniqueInput!]
+  disconnect: [VedioWhereUniqueInput!]
+  update: [VedioUpdateWithWhereUniqueWithoutQuestionsInput!]
+  upsert: [VedioUpsertWithWhereUniqueWithoutQuestionsInput!]
+  deleteMany: [VedioScalarWhereInput!]
+  updateMany: [VedioUpdateManyWithWhereNestedInput!]
+}
+
+input VedioUpdateManyWithoutSubjectsInput {
+  create: [VedioCreateWithoutSubjectsInput!]
+  delete: [VedioWhereUniqueInput!]
+  connect: [VedioWhereUniqueInput!]
+  set: [VedioWhereUniqueInput!]
+  disconnect: [VedioWhereUniqueInput!]
+  update: [VedioUpdateWithWhereUniqueWithoutSubjectsInput!]
+  upsert: [VedioUpsertWithWhereUniqueWithoutSubjectsInput!]
+  deleteMany: [VedioScalarWhereInput!]
+  updateMany: [VedioUpdateManyWithWhereNestedInput!]
+}
+
+input VedioUpdateManyWithWhereNestedInput {
+  where: VedioScalarWhereInput!
+  data: VedioUpdateManyDataInput!
+}
+
+input VedioUpdateWithoutQuestionsDataInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+  subjects: SubjectUpdateManyWithoutVideosInput
+  order: Int
+  status: String
+}
+
+input VedioUpdateWithoutSubjectsDataInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+  questions: QuestionsUpdateManyWithoutVideosInput
+  order: Int
+  status: String
+}
+
+input VedioUpdateWithWhereUniqueWithoutQuestionsInput {
+  where: VedioWhereUniqueInput!
+  data: VedioUpdateWithoutQuestionsDataInput!
+}
+
+input VedioUpdateWithWhereUniqueWithoutSubjectsInput {
+  where: VedioWhereUniqueInput!
+  data: VedioUpdateWithoutSubjectsDataInput!
+}
+
+input VedioUpsertWithWhereUniqueWithoutQuestionsInput {
+  where: VedioWhereUniqueInput!
+  update: VedioUpdateWithoutQuestionsDataInput!
+  create: VedioCreateWithoutQuestionsInput!
+}
+
+input VedioUpsertWithWhereUniqueWithoutSubjectsInput {
+  where: VedioWhereUniqueInput!
+  update: VedioUpdateWithoutSubjectsDataInput!
+  create: VedioCreateWithoutSubjectsInput!
+}
+
+input VedioWhereInput {
+  id: ID
+  id_not: ID
+  id_in: [ID!]
+  id_not_in: [ID!]
+  id_lt: ID
+  id_lte: ID
+  id_gt: ID
+  id_gte: ID
+  id_contains: ID
+  id_not_contains: ID
+  id_starts_with: ID
+  id_not_starts_with: ID
+  id_ends_with: ID
+  id_not_ends_with: ID
+  title: String
+  title_not: String
+  title_in: [String!]
+  title_not_in: [String!]
+  title_lt: String
+  title_lte: String
+  title_gt: String
+  title_gte: String
+  title_contains: String
+  title_not_contains: String
+  title_starts_with: String
+  title_not_starts_with: String
+  title_ends_with: String
+  title_not_ends_with: String
+  vedioSourse: String
+  vedioSourse_not: String
+  vedioSourse_in: [String!]
+  vedioSourse_not_in: [String!]
+  vedioSourse_lt: String
+  vedioSourse_lte: String
+  vedioSourse_gt: String
+  vedioSourse_gte: String
+  vedioSourse_contains: String
+  vedioSourse_not_contains: String
+  vedioSourse_starts_with: String
+  vedioSourse_not_starts_with: String
+  vedioSourse_ends_with: String
+  vedioSourse_not_ends_with: String
+  vedioUrl: String
+  vedioUrl_not: String
+  vedioUrl_in: [String!]
+  vedioUrl_not_in: [String!]
+  vedioUrl_lt: String
+  vedioUrl_lte: String
+  vedioUrl_gt: String
+  vedioUrl_gte: String
+  vedioUrl_contains: String
+  vedioUrl_not_contains: String
+  vedioUrl_starts_with: String
+  vedioUrl_not_starts_with: String
+  vedioUrl_ends_with: String
+  vedioUrl_not_ends_with: String
+  subjects_every: SubjectWhereInput
+  subjects_some: SubjectWhereInput
+  subjects_none: SubjectWhereInput
+  questions_every: QuestionsWhereInput
+  questions_some: QuestionsWhereInput
+  questions_none: QuestionsWhereInput
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
+  status: String
+  status_not: String
+  status_in: [String!]
+  status_not_in: [String!]
+  status_lt: String
+  status_lte: String
+  status_gt: String
+  status_gte: String
+  status_contains: String
+  status_not_contains: String
+  status_starts_with: String
+  status_not_starts_with: String
+  status_ends_with: String
+  status_not_ends_with: String
+  AND: [VedioWhereInput!]
+  OR: [VedioWhereInput!]
+  NOT: [VedioWhereInput!]
+}
+
+input VedioWhereUniqueInput {
+  id: ID
+}

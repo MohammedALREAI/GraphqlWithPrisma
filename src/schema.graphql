@@ -1,0 +1,343 @@
+# import * from './generated/prisma.graphql'
+
+type Mutation {
+  # user
+  createUser(data: CreateUserInput): AuthPaylod!
+  updateUser(data: UpdateUserInput): User!
+  deleteUser(id: ID!): User!
+  loginUser(data: LoginUserInput!): AuthPaylod!
+  #  publisher
+  createpublisher(data: CreatePublisherInput): Publisher!
+  updatepublisher(data: UpdatePublisherInput): Publisher!
+  deletepublisher(id: ID!): Publisher!
+
+  # classRooms
+  createclassRooms(data: CreateclassRoomInput): ClassRoom!
+  updateclassRooms(data: UpdateclassRoomInput): ClassRoom!
+  deleteclassRooms(id: ID!): ClassRoom!
+
+  # PubliserYear
+  createPubliserYear(data: CreatePubliserYearInput): PubliserYear!
+  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYearr!
+  deletePubliserYear(id: ID!): PubliserYear!
+  # Catogory
+  createCatogory(data: CreateCatogoryInput): Catogory!
+  updateCatogory(data: UpdateCatogoryInput): Catogory!
+  deleteCatogory(id: ID!): Catogory!
+
+  # Author
+  createAuthor(data: CreateAuthorInput): Author!
+  updateAuthor(data: UpdateAuthorInput): Author!
+  deleteAuthor(id: ID!): Author!
+  # Vedio
+  createVedio(data: CreateVedioInput): Vedio!
+  updateVedio(data: UpdateVedioInput): Vedio!
+  deleteVedio(id: ID!): Vedio!
+
+  # Books
+  createBook(data: CreateBookInput): Book!
+  updateBook(data: UpdateBookInput): Book!
+  deleteBook(id: ID!): Book!
+  # Subject
+  createSubject(data: CreateSubjectInput): Subject!
+  updateSubject(data: UpdateSubjectInput): Subject!
+  deleteSubject(id: ID!): Subject!
+
+  # BookTest
+  createBookTest(data: CreateBookTestInput): BookTest!
+  updateBookTest(data: UpdateBookTestInput): BookTest!
+  deleteBookTest(id: ID!): BookTest!
+
+  # Questions
+  createQuestions(data: CreateQuestionsInput): Questions!
+  updateQuestions(data: UpdateQuestionsInput): Questions!
+  deleteQuestions(id: ID!): Questions!
+
+  # couress
+  createCouress(data: CreateCouressInput): Couress!
+  updateCouress(data: UpdateCouressInput): Couress!
+  deleteCouress(id: ID!): Couress!
+}
+
+type Query {
+  users: [User!]!
+  user(id: ID!): User
+
+  publishers(query: String): [Publisher!]!
+  publisher(id: ID!): publisher!
+
+  classRooms(query: String): [classRoom!]!
+  classRoom(id: ID!): ClassRoom!
+
+  catogorys(query: String): [Catogory!]!
+  catogory(id: ID!): Catogory!
+
+  publiserYears(query: String): [PubliserYear!]!
+  publiserYear(id: ID): PubliserYear!
+
+  couress(query: String): [Couress!]!
+  coures(id: ID!): Couress!
+
+  authors(query: String): [Author!]!
+  author(id: ID!): Author!
+
+  videos(query: String): [Vedio!]!
+  vedio(id: ID): Vedio!
+
+  catogorys(query: String): [Catogory!]!
+  catogory(id: ID): Catogory!
+
+  books(query: String): [Book!]!
+  book(id: ID!): Book!
+
+  subjects(query: String): [Subject!]!
+  subject(id: ID): Subject!
+
+  bookTests(query: String): [BookTest!]!
+  bookTest(id: ID!): BookTest!
+
+  questions(query: String): [Questions!]!
+  question(id: ID!): Questions!
+}
+
+type Publisher {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  phoneNumber: String
+  address: String
+  books: [Books!]!
+  order: Int!
+  isListed: Boolean!
+}
+
+type ClassRoom {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: [Books!]!
+}
+
+type PubliserYear {
+  id: ID!
+  title: String!
+  slug: String!
+  description: String
+  isListed: Boolean!
+  status: Int!
+  books: [Books!]!
+}
+
+# startCouress
+type Couress {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isListed: Boolean!
+  status: Int!
+}
+
+type Catogory {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isListed: Boolean!
+  status: Int!
+}
+
+type Author {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isListed: Boolean!
+  status: Int!
+  slug: String!
+}
+
+type Book {
+  id: ID!
+  title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]!
+  author: [Author!]!
+  couress: [Couress!]!
+  catogory: [Catogory!]!
+  publiserYear: [PubliserYear!]!
+  publisher: [Publisher!]!
+  classRoom: [ClassRoom!]!
+  isListed: Boolean!
+  description: String
+  status: Int!
+  subjects: [subjects!]!
+}
+
+type Subject {
+  id: ID!
+  title: String!
+  description: String
+  books: [Books!]!
+  isListed: Boolean!
+  status: Int!
+  videos: [Vedio!]!
+}
+
+# end subjects
+type BookTest {
+  id: ID!
+  title: String!
+  questions: [Questions!]!
+  isListed: Boolean!
+  status: Int!
+}
+type Questions {
+  id: ID!
+  title: String!
+  questions: [Questions!]!
+  videos: [Vedio!]!
+  correctAnswer: String
+  bookTest: [BookTest!]!
+  status: Int!
+}
+
+type Vedio {
+  id: ID!
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String!
+  subjects: [Subject!]!
+  questions: [Questions!]!
+  order: Int!
+  status: String!
+}
+type User {
+  id: ID!
+  email: String!
+  password: String!
+  name: String!
+}
+
+type AuthPaylod {
+  token: String!
+  user: User!
+}
+type UpludePayload {
+  photo: String!
+}
+
+# input  all  items
+
+input LoginUserInput {
+  email: String!
+  password: String!
+}
+input UpdateUserInput {
+  email: String
+  password: String
+  name: String
+}
+
+input CreateUserInput {
+  email: String!
+  password: String!
+  name: String!
+}
+
+input CreatePublisherInput {
+  title: String!
+}
+input UpdatePublisherInput {
+  title: String
+}
+input CreateclassRoomInput {
+  correctAnswer: String!
+}
+input UpdateclassRoomInput {
+  correctAnswer: String!
+}
+
+input UpdateCatogoryInput {
+  title: String!
+}
+input CreatePubliserYearInput {
+  title: String
+}
+input UpdatePubliserYearInput {
+  title: String!
+}
+input CreateCatogoryInput {
+  title: String
+}
+input UpdateCatogoryInput {
+  title: String
+}
+input CreatepubliserYearsInput {
+  title: String!
+}
+input UpdatepubliserYearsInput {
+  title: String!
+}
+input CreateAuthorInput {
+  title: String!
+}
+input UpdateAuthorInput {
+  title: String!
+}
+input CreateVedioInput {
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String
+}
+input UpdateVedioInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+}
+
+input UpdateCatogoryInput {
+  title: String!
+}
+input CreateBookInput {
+  title: String!
+}
+input UpdateBookInput
+input CreateSubjectInput {
+  title: String!
+  description: String!
+}
+input UpdateSubjectInput {
+  title: String!
+  description: String!
+}
+input CreateBookTestInput {
+  title: String!
+}
+input UpdateBookTestInput {
+  title: String
+}
+input CreateQuestionsInput {
+  title: String!
+  correctAnswer: String
+}
+input UpdateQuestionsInput {
+  title: String
+  correctAnswer: String
+}
+
+input CreateCouressInput {
+  title: String!
+}
+input UpdateCouressInput {
+  title: String!
+}

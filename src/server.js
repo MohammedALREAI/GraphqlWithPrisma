@@ -1,6 +1,6 @@
 import {GraphQLServer  } from "graphql-yoga";
 import prisma from "./prisma";
-require('dotenv').config({ path: '../.env' });
+require("dotenv").config();
 import { FragmentReplacements } from "./resolvers";
 import schema from "./Schema";
 
