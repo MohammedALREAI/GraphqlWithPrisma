@@ -1,0 +1,15 @@
+type Mutation {
+  createPubliserYear(data: CreatePubliserYearInput): PubliserYear!
+  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYearr!
+  deletePubliserYear(id: ID!): PubliserYear!
+}
+type Query {
+  publiserYears(query: String): [PubliserYear!]!
+  publiserYear(id: ID): PubliserYear!
+}
+input CreatePubliserYearInput {
+  title: String!
+}
+input UpdatePubliserYearInput {
+  title: String
+}

@@ -1,0 +1,17 @@
+type Mutation {
+  createQuestions(data: CreateQuestionsInput): Questions!
+  updateQuestions(data: UpdateQuestionsInput): Questions!
+  deleteQuestions(id: ID!): Questions!
+}
+type Query {
+  questions(query: String): [Questions!]!
+  question(id: ID!): Questions!
+}
+input CreateQuestionsInput {
+  title: String!
+  correctAnswer: String
+}
+input UpdateQuestionsInput {
+  title: String
+  correctAnswer: String
+}

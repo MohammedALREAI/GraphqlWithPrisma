@@ -1,0 +1,17 @@
+type Mutation {
+  createSubject(data: CreateSubjectInput): Subject!
+  updateSubject(data: UpdateSubjectInput): Subject!
+  deleteSubject(id: ID!): Subject!
+}
+type Query {
+  subjects(query: String): [Subject!]!
+  subject(id: ID): Subject!
+}
+input CreateSubjectInput {
+  title: String!
+  description: String!
+}
+input UpdateSubjectInput {
+  title: String
+  description: String
+}

@@ -1,0 +1,15 @@
+type Mutation {
+  createpublisher(data: CreatePublisherInput): Publisher!
+  updatepublisher(data: UpdatePublisherInput): Publisher!
+  deletepublisher(id: ID!): Publisher!
+}
+type Query {
+  publishers(query: String): [Publisher!]!
+  publisher(id: ID!): publisher!
+}
+input CreatePublisherInput {
+  title: String!
+}
+input UpdatePublisherInput {
+  title: String
+}

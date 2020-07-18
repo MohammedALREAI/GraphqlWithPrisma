@@ -1,0 +1,19 @@
+type Mutation {
+  createVedio(data: CreateVedioInput): Vedio!
+  updateVedio(data: UpdateVedioInput): Vedio!
+  deleteVedio(id: ID!): Vedio!
+}
+type Query {
+  videos(query: String): [Vedio!]!
+  vedio(id: ID): Vedio!
+}
+input CreateVedioInput {
+  title: String!
+  vedioSourse: String!
+  vedioUrl: String
+}
+input UpdateVedioInput {
+  title: String
+  vedioSourse: String
+  vedioUrl: String
+}

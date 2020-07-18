@@ -1,0 +1,15 @@
+type Mutation {
+  createCouress(data: CreateCouressInput): Couress!
+  updateCouress(data: UpdateCouressInput): Couress!
+  deleteCouress(id: ID!): Couress!
+}
+type Query {
+  couress(query: String): [Couress!]!
+  coures(id: ID!): Couress!
+}
+input CreateCouressInput {
+  title: String!
+}
+input UpdateCouressInput {
+  title: String
+}

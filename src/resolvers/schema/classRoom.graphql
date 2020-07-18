@@ -1,0 +1,15 @@
+type Mutation {
+  createclassRooms(data: CreateclassRoomInput): ClassRoom!
+  updateclassRooms(data: UpdateclassRoomInput): ClassRoom!
+  deleteclassRooms(id: ID!): ClassRoom!
+}
+type Query {
+  classRooms(query: String): [classRoom!]!
+  classRoom(id: ID!): ClassRoom!
+}
+input CreateclassRoomInput {
+  correctAnswer: String!
+}
+input UpdateclassRoomInput {
+  correctAnswer: String!
+}

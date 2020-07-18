@@ -1,0 +1,15 @@
+type Mutation {
+  createCatogory(data: CreateCatogoryInput): Catogory!
+  updateCatogory(data: UpdateCatogoryInput): Catogory!
+  deleteCatogory(id: ID!): Catogory!
+}
+type Query {
+  catogorys(query: String): [Catogory!]!
+  catogory(id: ID!): Catogory!
+}
+input CreateCatogoryInput {
+  title: String!
+}
+input UpdateCatogoryInput {
+  title: String
+}

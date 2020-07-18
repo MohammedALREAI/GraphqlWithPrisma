@@ -1,0 +1,15 @@
+type Mutation {
+  createBookTest(data: CreateBookTestInput): BookTest!
+  updateBookTest(data: UpdateBookTestInput): BookTest!
+  deleteBookTest(id: ID!): BookTest!
+}
+type Query {
+  bookTests(query: String): [BookTest!]!
+  bookTest(id: ID!): BookTest!
+}
+input CreateBookTestInput {
+  title: String!
+}
+input UpdateBookTestInput {
+  title: String
+}
