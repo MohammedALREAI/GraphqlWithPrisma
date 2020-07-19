@@ -1,6 +1,6 @@
 type Mutation {
   createPubliserYear(data: CreatePubliserYearInput): PubliserYear!
-  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYearr!
+  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYear!
   deletePubliserYear(id: ID!): PubliserYear!
 }
 type Query {

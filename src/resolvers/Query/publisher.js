@@ -1,9 +1,22 @@
-const PublisherQuery = {
+const { AuthErrorMessage } = require("../../utils/ErrorMesage");
 
-     publishers: async (parent, args, ctx, info) => {
-          return await ctx.prisma.query.publisher({}, info)
+
+module.exports = {
+     Query: {
+            publishers: async (parent, args, ctx, info) => {
+          const isUser = ctx.getUser();
+
+          if (!isUser) {
+               AuthErrorMessage()
+          }
+          return await ctx.prisma.query.publishers({}, info)
      },
      publisher: async (parent, args, ctx, info) => {
+          const isUser = ctx.getUser();
+
+          if (!isUser) {
+               AuthErrorMessage()
+          }
           return await ctx.prisma.query.publisherS({
                where: {
                     id: args.id
@@ -11,7 +24,8 @@ const PublisherQuery = {
           }, info)
 
 
-     },
+     }
 
-}
-export default PublisherQuery;
+
+
+}}

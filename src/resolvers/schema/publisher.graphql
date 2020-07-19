@@ -5,7 +5,7 @@ type Mutation {
 }
 type Query {
   publishers(query: String): [Publisher!]!
-  publisher(id: ID!): publisher!
+  publisher(id: ID!): Publisher!
 }
 input CreatePublisherInput {
   title: String!

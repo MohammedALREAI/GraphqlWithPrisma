@@ -1,9 +1,18 @@
-const bookTestsQuery= {
+const { AuthErrorMessage } = require("../../utils/ErrorMesage");
 
+
+module.exports = {
+     Query: {
      bookTests: async (parent, args, ctx, info) => {
-          return await ctx.prisma.query.bookTest({}, info)
+          const isUser = ctx.getUser();
+
+          if (!isUser) {
+               AuthErrorMessage()
+          }
+          return await ctx.prisma.query.bookTests({}, info)
      },
      bookTest: async (parent, args, ctx, info) => {
+
           return await ctx.prisma.query.bookTest
 ({
                where: {
@@ -15,5 +24,5 @@ const bookTestsQuery= {
      },
 
 }
-export default bookTestsQuery
-;
+
+}

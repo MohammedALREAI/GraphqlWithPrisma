@@ -1,12 +1,27 @@
-const AuthorQuery = {
+import { AuthErrorMessage } from '../../utils/ErrorMesage'
 
-     authors: async (parent, args, ctx, info) => {
+
+module.exports = {
+     Query: {
+           authors: async (parent, args, ctx, info) => {
+          const isUser = ctx.getUser();
+
+          if (!isUser) {
+               AuthErrorMessage()
+          }
+
           return await ctx.prisma.query.authors({}, info)
      },
      author: async (parent, args, ctx, info) => {
+          const isUser = ctx.getUser();
+
+          if (!isUser) {
+               AuthErrorMessage()
+          }
+          const {id}=args.id;
           return await ctx.prisma.query.author({
                where: {
-                    id: args.id
+                    id
                }
           }, info)
 
@@ -14,4 +29,4 @@ const AuthorQuery = {
      },
 
 }
-export default AuthorQuery;
+}

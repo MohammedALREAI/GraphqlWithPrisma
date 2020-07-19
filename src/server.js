@@ -1,15 +1,15 @@
-import {GraphQLServer  } from "graphql-yoga";
 import prisma from "./prisma";
 require("dotenv").config();
-import { FragmentReplacements } from "./resolvers";
+import { GraphQLServer } from "graphql-yoga";
+
+import { FragmentReplacements } from "./utils/index";
 import schema from "./Schema";
-
-
+import {getUser} from'./utils/getUser'
 
 const server= new GraphQLServer({
      schema,
      context:(request)=>{
-return {prisma,request}
+return {prisma,request,getUser}
      },
      FragmentReplacements
 })

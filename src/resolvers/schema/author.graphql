@@ -9,6 +9,7 @@ type Query {
 }
 input CreateAuthorInput {
   title: String!
+  description:String
 }
 input UpdateAuthorInput {
   title: String

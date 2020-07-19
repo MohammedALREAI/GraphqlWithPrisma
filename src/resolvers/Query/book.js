@@ -1,8 +1,12 @@
-// where: OrderItemWhereInput, orderBy: OrderItemOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int
-const BookQuery = {
 
-     books: async (parent, {query,filter,skip,orderBy}, ctx, info) => {
-c
+
+module.exports = {
+     Query: {
+     books: async (parent,args , ctx, info) => {
+          orderBy
+          skip
+          first
+          const { orderBy, skip, where, first}=args;
           const OptionSearch={}
           const FilterSearch={
                where:{
@@ -22,13 +26,12 @@ c
 
 
           const {
+               authors,
+               couress,
+                publisherYears,
             publisher,
-            author,
-            couress,
-            publiserYear,
-            publisher,
-            classRoom,
-            catogory,
+               classRooms,
+               catagories,
           } = filter;
           return await ctx.prisma.query.books(
             {
@@ -49,4 +52,4 @@ c
      },
 
 }
-export default BookQuerybook;
+}

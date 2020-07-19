@@ -18,7 +18,7 @@ type Mutation {
 
   # PubliserYear
   createPubliserYear(data: CreatePubliserYearInput): PubliserYear!
-  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYearr!
+  updatePubliserYear(data: UpdatePubliserYearInput): PubliserYear!
   deletePubliserYear(id: ID!): PubliserYear!
   # Catogory
   createCatogory(data: CreateCatogoryInput): Catogory!
@@ -34,7 +34,6 @@ type Mutation {
   updateVedio(data: UpdateVedioInput): Vedio!
   deleteVedio(id: ID!): Vedio!
 
-  # Books
   createBook(data: CreateBookInput): Book!
   updateBook(data: UpdateBookInput): Book!
   deleteBook(id: ID!): Book!
@@ -43,7 +42,6 @@ type Mutation {
   updateSubject(data: UpdateSubjectInput): Subject!
   deleteSubject(id: ID!): Subject!
 
-  # BookTest
   createBookTest(data: CreateBookTestInput): BookTest!
   updateBookTest(data: UpdateBookTestInput): BookTest!
   deleteBookTest(id: ID!): BookTest!
@@ -64,9 +62,9 @@ type Query {
   user(id: ID!): User
 
   publishers(query: String): [Publisher!]!
-  publisher(id: ID!): publisher!
+  publisher(id: ID!): Publisher!
 
-  classRooms(query: String): [classRoom!]!
+  classRooms(query: String): [ClassRoom!]!
   classRoom(id: ID!): ClassRoom!
 
   catogorys(query: String): [Catogory!]!
@@ -107,7 +105,7 @@ type Publisher {
   description: String
   phoneNumber: String
   address: String
-  books: [Books!]!
+  books: [Book!]!
   order: Int!
   isListed: Boolean!
 }
@@ -119,7 +117,7 @@ type ClassRoom {
   description: String
   isListed: Boolean!
   status: Int!
-  books: [Books!]!
+  books: [Book!]!
 }
 
 type PubliserYear {
@@ -129,7 +127,7 @@ type PubliserYear {
   description: String
   isListed: Boolean!
   status: Int!
-  books: [Books!]!
+  books: [Book!]!
 }
 
 # startCouress
@@ -137,7 +135,7 @@ type Couress {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
 }
@@ -146,7 +144,7 @@ type Catogory {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
 }
@@ -155,7 +153,7 @@ type Author {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
   slug: String!
@@ -171,23 +169,23 @@ type Book {
   shopeLink: String
   cover: String
   photos: [String!]!
-  author: [Author!]!
+  authors: [Author!]!
   couress: [Couress!]!
-  catogory: [Catogory!]!
-  publiserYear: [PubliserYear!]!
-  publisher: [Publisher!]!
-  classRoom: [ClassRoom!]!
+  catagories: [Catogory!]!
+  publisherYears: [PubliserYear!]!
+  publishers: [Publisher!]!
+  classRooms: [ClassRoom!]!
   isListed: Boolean!
   description: String
   status: Int!
-  subjects: [subjects!]!
+  subjects: [Subject!]!
 }
 
 type Subject {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
   videos: [Vedio!]!
@@ -290,9 +288,11 @@ input UpdatepubliserYearsInput {
 }
 input CreateAuthorInput {
   title: String!
+  description: String
 }
 input UpdateAuthorInput {
   title: String!
+  description: String
 }
 input CreateVedioInput {
   title: String!
@@ -310,8 +310,30 @@ input UpdateCatogoryInput {
 }
 input CreateBookInput {
   title: String!
+  slug: String!
+  isbn: String
+  size: String
+  price: Int!
+  shopeLink: String
+  cover: String
+  photos: [String!]
+  authors: ID!
+  couress: ID!
+  catagories: ID!
+  publisherYears: ID!
+  publishers: ID!
+  classRooms: ID!
+  description: String
+  subjects: ID!
 }
-input UpdateBookInput
+input UpdateBookInput {
+  title: String
+  isbn: String
+  size: String
+  price: Int
+  shopeLink: String
+  cover: String
+}
 input CreateSubjectInput {
   title: String!
   description: String!

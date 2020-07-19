@@ -8,12 +8,12 @@ type Book {
   shopeLink: String
   cover: String
   photos: [String!]! @scalarList(strategy: RELATION)
-  author: [Author!]!@realtion(name:"BookToAuthors",onDelete: SET_NULL)
+  authors: [Author!]!@realtion(name:"BookToAuthors",onDelete: SET_NULL)
   couress: [Couress!]!@realtion(name:"BookToCouress",onDelete: CASCADE)
-  catogory: [Catogory!]!@realtion(name:"BookToCatogory",onDelete: SET_NULL)
-  publiserYear: [PubliserYear!]! @realtion(name:"BookToPubliserYear",onDelete: CASCADE)
-  publisher: [Publisher!]!@realtion(name:"BookToPublisher",onDelete: SET_NULL)
-  classRoom: [ClassRoom!]!@realtion(name:"BookToClassRoom",onDelete: SET_NULL)
+  catagories: [Catogory!]!@realtion(name:"BookToCatogory",onDelete: SET_NULL)
+  publisherYears: [PubliserYear!]! @realtion(name:"BookToPubliserYear",onDelete: CASCADE)
+  publishers: [Publisher!]!@realtion(name:"BookToPublisher",onDelete: SET_NULL)
+  classRooms: [ClassRoom!]!@realtion(name:"BookToClassRoom",onDelete: SET_NULL)
   isListed: Boolean!@default(value:false)
   description: String
   status: Int!

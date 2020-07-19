@@ -1,5 +1,5 @@
 type Mutation {
-  createVedio(data: CreateVedioInput): Vedio!
+ createVedio(data: CreateVedioInput): Vedio!
   updateVedio(data: UpdateVedioInput): Vedio!
   deleteVedio(id: ID!): Vedio!
 }

@@ -5,7 +5,7 @@ type Publisher {
   description: String
   phoneNumber: String
   address: String
-  books: [Books!]!
+  books: [Book!]!
   order: Int!
   isListed: Boolean!
 }
@@ -17,7 +17,7 @@ type ClassRoom {
   description: String
   isListed: Boolean!
   status: Int!
-  books: [Books!]!
+  books: [Book!]!
 }
 
 type PubliserYear {
@@ -27,7 +27,7 @@ type PubliserYear {
   description: String
   isListed: Boolean!
   status: Int!
-  books: [Books!]!
+  books: [Book!]!
 }
 
 # startCouress
@@ -35,7 +35,7 @@ type Couress {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
 }
@@ -44,7 +44,7 @@ type Catogory {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
 }
@@ -53,7 +53,7 @@ type Author {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
   slug: String!
@@ -78,14 +78,14 @@ type Book {
   isListed: Boolean!
   description: String
   status: Int!
-  subjects: [subjects!]!
+  subjects: [Subject!]!
 }
 
 type Subject {
   id: ID!
   title: String!
   description: String
-  books: [Books!]!
+  books: [Book!]!
   isListed: Boolean!
   status: Int!
   videos: [Vedio!]!

@@ -64,7 +64,7 @@ input AuthorCreateInput {
   id: ID
   title: String!
   description: String
-  books: BookCreateManyWithoutAuthorInput
+  books: BookCreateManyWithoutAuthorsInput
   isListed: Boolean!
   status: Int!
   slug: String!
@@ -228,7 +228,7 @@ input AuthorSubscriptionWhereInput {
 input AuthorUpdateInput {
   title: String
   description: String
-  books: BookUpdateManyWithoutAuthorInput
+  books: BookUpdateManyWithoutAuthorsInput
   isListed: Boolean
   status: Int
   slug: String
@@ -395,12 +395,12 @@ type Book {
   shopeLink: String
   cover: String
   photos: [String!]!
-  author(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author!]
+  authors(where: AuthorWhereInput, orderBy: AuthorOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Author!]
   couress(where: CouressWhereInput, orderBy: CouressOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Couress!]
-  catogory(where: CatogoryWhereInput, orderBy: CatogoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Catogory!]
-  publiserYear(where: PubliserYearWhereInput, orderBy: PubliserYearOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PubliserYear!]
-  publisher(where: PublisherWhereInput, orderBy: PublisherOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Publisher!]
-  classRoom(where: ClassRoomWhereInput, orderBy: ClassRoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ClassRoom!]
+  catagories(where: CatogoryWhereInput, orderBy: CatogoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Catogory!]
+  publisherYears(where: PubliserYearWhereInput, orderBy: PubliserYearOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [PubliserYear!]
+  publishers(where: PublisherWhereInput, orderBy: PublisherOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Publisher!]
+  classRooms(where: ClassRoomWhereInput, orderBy: ClassRoomOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ClassRoom!]
   isListed: Boolean!
   description: String
   status: Int!
@@ -425,30 +425,30 @@ input BookCreateInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
   subjects: SubjectCreateManyWithoutBooksInput
 }
 
-input BookCreateManyWithoutAuthorInput {
-  create: [BookCreateWithoutAuthorInput!]
+input BookCreateManyWithoutAuthorsInput {
+  create: [BookCreateWithoutAuthorsInput!]
   connect: [BookWhereUniqueInput!]
 }
 
-input BookCreateManyWithoutCatogoryInput {
-  create: [BookCreateWithoutCatogoryInput!]
+input BookCreateManyWithoutCatagoriesInput {
+  create: [BookCreateWithoutCatagoriesInput!]
   connect: [BookWhereUniqueInput!]
 }
 
-input BookCreateManyWithoutClassRoomInput {
-  create: [BookCreateWithoutClassRoomInput!]
+input BookCreateManyWithoutClassRoomsInput {
+  create: [BookCreateWithoutClassRoomsInput!]
   connect: [BookWhereUniqueInput!]
 }
 
@@ -457,13 +457,13 @@ input BookCreateManyWithoutCouressInput {
   connect: [BookWhereUniqueInput!]
 }
 
-input BookCreateManyWithoutPubliserYearInput {
-  create: [BookCreateWithoutPubliserYearInput!]
+input BookCreateManyWithoutPublishersInput {
+  create: [BookCreateWithoutPublishersInput!]
   connect: [BookWhereUniqueInput!]
 }
 
-input BookCreateManyWithoutPublisherInput {
-  create: [BookCreateWithoutPublisherInput!]
+input BookCreateManyWithoutPublisherYearsInput {
+  create: [BookCreateWithoutPublisherYearsInput!]
   connect: [BookWhereUniqueInput!]
 }
 
@@ -476,7 +476,7 @@ input BookCreatephotosInput {
   set: [String!]
 }
 
-input BookCreateWithoutAuthorInput {
+input BookCreateWithoutAuthorsInput {
   id: ID
   title: String!
   slug: String!
@@ -487,17 +487,17 @@ input BookCreateWithoutAuthorInput {
   cover: String
   photos: BookCreatephotosInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
   subjects: SubjectCreateManyWithoutBooksInput
 }
 
-input BookCreateWithoutCatogoryInput {
+input BookCreateWithoutCatagoriesInput {
   id: ID
   title: String!
   slug: String!
@@ -507,18 +507,18 @@ input BookCreateWithoutCatogoryInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
   subjects: SubjectCreateManyWithoutBooksInput
 }
 
-input BookCreateWithoutClassRoomInput {
+input BookCreateWithoutClassRoomsInput {
   id: ID
   title: String!
   slug: String!
@@ -528,11 +528,11 @@ input BookCreateWithoutClassRoomInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
@@ -549,18 +549,18 @@ input BookCreateWithoutCouressInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
   subjects: SubjectCreateManyWithoutBooksInput
 }
 
-input BookCreateWithoutPubliserYearInput {
+input BookCreateWithoutPublishersInput {
   id: ID
   title: String!
   slug: String!
@@ -570,18 +570,18 @@ input BookCreateWithoutPubliserYearInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
   subjects: SubjectCreateManyWithoutBooksInput
 }
 
-input BookCreateWithoutPublisherInput {
+input BookCreateWithoutPublisherYearsInput {
   id: ID
   title: String!
   slug: String!
@@ -591,11 +591,11 @@ input BookCreateWithoutPublisherInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
@@ -612,12 +612,12 @@ input BookCreateWithoutSubjectsInput {
   shopeLink: String
   cover: String
   photos: BookCreatephotosInput
-  author: AuthorCreateManyWithoutBooksInput
+  authors: AuthorCreateManyWithoutBooksInput
   couress: CouressCreateManyWithoutBooksInput
-  catogory: CatogoryCreateManyWithoutBooksInput
-  publiserYear: PubliserYearCreateManyWithoutBooksInput
-  publisher: PublisherCreateManyWithoutBooksInput
-  classRoom: ClassRoomCreateManyWithoutBooksInput
+  catagories: CatogoryCreateManyWithoutBooksInput
+  publisherYears: PubliserYearCreateManyWithoutBooksInput
+  publishers: PublisherCreateManyWithoutBooksInput
+  classRooms: ClassRoomCreateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int!
@@ -1034,12 +1034,12 @@ input BookUpdateInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
@@ -1074,38 +1074,38 @@ input BookUpdateManyMutationInput {
   status: Int
 }
 
-input BookUpdateManyWithoutAuthorInput {
-  create: [BookCreateWithoutAuthorInput!]
+input BookUpdateManyWithoutAuthorsInput {
+  create: [BookCreateWithoutAuthorsInput!]
   delete: [BookWhereUniqueInput!]
   connect: [BookWhereUniqueInput!]
   set: [BookWhereUniqueInput!]
   disconnect: [BookWhereUniqueInput!]
-  update: [BookUpdateWithWhereUniqueWithoutAuthorInput!]
-  upsert: [BookUpsertWithWhereUniqueWithoutAuthorInput!]
+  update: [BookUpdateWithWhereUniqueWithoutAuthorsInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutAuthorsInput!]
   deleteMany: [BookScalarWhereInput!]
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
 
-input BookUpdateManyWithoutCatogoryInput {
-  create: [BookCreateWithoutCatogoryInput!]
+input BookUpdateManyWithoutCatagoriesInput {
+  create: [BookCreateWithoutCatagoriesInput!]
   delete: [BookWhereUniqueInput!]
   connect: [BookWhereUniqueInput!]
   set: [BookWhereUniqueInput!]
   disconnect: [BookWhereUniqueInput!]
-  update: [BookUpdateWithWhereUniqueWithoutCatogoryInput!]
-  upsert: [BookUpsertWithWhereUniqueWithoutCatogoryInput!]
+  update: [BookUpdateWithWhereUniqueWithoutCatagoriesInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutCatagoriesInput!]
   deleteMany: [BookScalarWhereInput!]
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
 
-input BookUpdateManyWithoutClassRoomInput {
-  create: [BookCreateWithoutClassRoomInput!]
+input BookUpdateManyWithoutClassRoomsInput {
+  create: [BookCreateWithoutClassRoomsInput!]
   delete: [BookWhereUniqueInput!]
   connect: [BookWhereUniqueInput!]
   set: [BookWhereUniqueInput!]
   disconnect: [BookWhereUniqueInput!]
-  update: [BookUpdateWithWhereUniqueWithoutClassRoomInput!]
-  upsert: [BookUpsertWithWhereUniqueWithoutClassRoomInput!]
+  update: [BookUpdateWithWhereUniqueWithoutClassRoomsInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutClassRoomsInput!]
   deleteMany: [BookScalarWhereInput!]
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
@@ -1122,26 +1122,26 @@ input BookUpdateManyWithoutCouressInput {
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
 
-input BookUpdateManyWithoutPubliserYearInput {
-  create: [BookCreateWithoutPubliserYearInput!]
+input BookUpdateManyWithoutPublishersInput {
+  create: [BookCreateWithoutPublishersInput!]
   delete: [BookWhereUniqueInput!]
   connect: [BookWhereUniqueInput!]
   set: [BookWhereUniqueInput!]
   disconnect: [BookWhereUniqueInput!]
-  update: [BookUpdateWithWhereUniqueWithoutPubliserYearInput!]
-  upsert: [BookUpsertWithWhereUniqueWithoutPubliserYearInput!]
+  update: [BookUpdateWithWhereUniqueWithoutPublishersInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutPublishersInput!]
   deleteMany: [BookScalarWhereInput!]
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
 
-input BookUpdateManyWithoutPublisherInput {
-  create: [BookCreateWithoutPublisherInput!]
+input BookUpdateManyWithoutPublisherYearsInput {
+  create: [BookCreateWithoutPublisherYearsInput!]
   delete: [BookWhereUniqueInput!]
   connect: [BookWhereUniqueInput!]
   set: [BookWhereUniqueInput!]
   disconnect: [BookWhereUniqueInput!]
-  update: [BookUpdateWithWhereUniqueWithoutPublisherInput!]
-  upsert: [BookUpsertWithWhereUniqueWithoutPublisherInput!]
+  update: [BookUpdateWithWhereUniqueWithoutPublisherYearsInput!]
+  upsert: [BookUpsertWithWhereUniqueWithoutPublisherYearsInput!]
   deleteMany: [BookScalarWhereInput!]
   updateMany: [BookUpdateManyWithWhereNestedInput!]
 }
@@ -1167,7 +1167,7 @@ input BookUpdatephotosInput {
   set: [String!]
 }
 
-input BookUpdateWithoutAuthorDataInput {
+input BookUpdateWithoutAuthorsDataInput {
   title: String
   slug: String
   isbn: String
@@ -1177,17 +1177,17 @@ input BookUpdateWithoutAuthorDataInput {
   cover: String
   photos: BookUpdatephotosInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
   subjects: SubjectUpdateManyWithoutBooksInput
 }
 
-input BookUpdateWithoutCatogoryDataInput {
+input BookUpdateWithoutCatagoriesDataInput {
   title: String
   slug: String
   isbn: String
@@ -1196,18 +1196,18 @@ input BookUpdateWithoutCatogoryDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
   subjects: SubjectUpdateManyWithoutBooksInput
 }
 
-input BookUpdateWithoutClassRoomDataInput {
+input BookUpdateWithoutClassRoomsDataInput {
   title: String
   slug: String
   isbn: String
@@ -1216,11 +1216,11 @@ input BookUpdateWithoutClassRoomDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
@@ -1236,18 +1236,18 @@ input BookUpdateWithoutCouressDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
   subjects: SubjectUpdateManyWithoutBooksInput
 }
 
-input BookUpdateWithoutPubliserYearDataInput {
+input BookUpdateWithoutPublishersDataInput {
   title: String
   slug: String
   isbn: String
@@ -1256,18 +1256,18 @@ input BookUpdateWithoutPubliserYearDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
   subjects: SubjectUpdateManyWithoutBooksInput
 }
 
-input BookUpdateWithoutPublisherDataInput {
+input BookUpdateWithoutPublisherYearsDataInput {
   title: String
   slug: String
   isbn: String
@@ -1276,11 +1276,11 @@ input BookUpdateWithoutPublisherDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
@@ -1296,30 +1296,30 @@ input BookUpdateWithoutSubjectsDataInput {
   shopeLink: String
   cover: String
   photos: BookUpdatephotosInput
-  author: AuthorUpdateManyWithoutBooksInput
+  authors: AuthorUpdateManyWithoutBooksInput
   couress: CouressUpdateManyWithoutBooksInput
-  catogory: CatogoryUpdateManyWithoutBooksInput
-  publiserYear: PubliserYearUpdateManyWithoutBooksInput
-  publisher: PublisherUpdateManyWithoutBooksInput
-  classRoom: ClassRoomUpdateManyWithoutBooksInput
+  catagories: CatogoryUpdateManyWithoutBooksInput
+  publisherYears: PubliserYearUpdateManyWithoutBooksInput
+  publishers: PublisherUpdateManyWithoutBooksInput
+  classRooms: ClassRoomUpdateManyWithoutBooksInput
   isListed: Boolean
   description: String
   status: Int
 }
 
-input BookUpdateWithWhereUniqueWithoutAuthorInput {
+input BookUpdateWithWhereUniqueWithoutAuthorsInput {
   where: BookWhereUniqueInput!
-  data: BookUpdateWithoutAuthorDataInput!
+  data: BookUpdateWithoutAuthorsDataInput!
 }
 
-input BookUpdateWithWhereUniqueWithoutCatogoryInput {
+input BookUpdateWithWhereUniqueWithoutCatagoriesInput {
   where: BookWhereUniqueInput!
-  data: BookUpdateWithoutCatogoryDataInput!
+  data: BookUpdateWithoutCatagoriesDataInput!
 }
 
-input BookUpdateWithWhereUniqueWithoutClassRoomInput {
+input BookUpdateWithWhereUniqueWithoutClassRoomsInput {
   where: BookWhereUniqueInput!
-  data: BookUpdateWithoutClassRoomDataInput!
+  data: BookUpdateWithoutClassRoomsDataInput!
 }
 
 input BookUpdateWithWhereUniqueWithoutCouressInput {
@@ -1327,14 +1327,14 @@ input BookUpdateWithWhereUniqueWithoutCouressInput {
   data: BookUpdateWithoutCouressDataInput!
 }
 
-input BookUpdateWithWhereUniqueWithoutPubliserYearInput {
+input BookUpdateWithWhereUniqueWithoutPublishersInput {
   where: BookWhereUniqueInput!
-  data: BookUpdateWithoutPubliserYearDataInput!
+  data: BookUpdateWithoutPublishersDataInput!
 }
 
-input BookUpdateWithWhereUniqueWithoutPublisherInput {
+input BookUpdateWithWhereUniqueWithoutPublisherYearsInput {
   where: BookWhereUniqueInput!
-  data: BookUpdateWithoutPublisherDataInput!
+  data: BookUpdateWithoutPublisherYearsDataInput!
 }
 
 input BookUpdateWithWhereUniqueWithoutSubjectsInput {
@@ -1342,22 +1342,22 @@ input BookUpdateWithWhereUniqueWithoutSubjectsInput {
   data: BookUpdateWithoutSubjectsDataInput!
 }
 
-input BookUpsertWithWhereUniqueWithoutAuthorInput {
+input BookUpsertWithWhereUniqueWithoutAuthorsInput {
   where: BookWhereUniqueInput!
-  update: BookUpdateWithoutAuthorDataInput!
-  create: BookCreateWithoutAuthorInput!
+  update: BookUpdateWithoutAuthorsDataInput!
+  create: BookCreateWithoutAuthorsInput!
 }
 
-input BookUpsertWithWhereUniqueWithoutCatogoryInput {
+input BookUpsertWithWhereUniqueWithoutCatagoriesInput {
   where: BookWhereUniqueInput!
-  update: BookUpdateWithoutCatogoryDataInput!
-  create: BookCreateWithoutCatogoryInput!
+  update: BookUpdateWithoutCatagoriesDataInput!
+  create: BookCreateWithoutCatagoriesInput!
 }
 
-input BookUpsertWithWhereUniqueWithoutClassRoomInput {
+input BookUpsertWithWhereUniqueWithoutClassRoomsInput {
   where: BookWhereUniqueInput!
-  update: BookUpdateWithoutClassRoomDataInput!
-  create: BookCreateWithoutClassRoomInput!
+  update: BookUpdateWithoutClassRoomsDataInput!
+  create: BookCreateWithoutClassRoomsInput!
 }
 
 input BookUpsertWithWhereUniqueWithoutCouressInput {
@@ -1366,16 +1366,16 @@ input BookUpsertWithWhereUniqueWithoutCouressInput {
   create: BookCreateWithoutCouressInput!
 }
 
-input BookUpsertWithWhereUniqueWithoutPubliserYearInput {
+input BookUpsertWithWhereUniqueWithoutPublishersInput {
   where: BookWhereUniqueInput!
-  update: BookUpdateWithoutPubliserYearDataInput!
-  create: BookCreateWithoutPubliserYearInput!
+  update: BookUpdateWithoutPublishersDataInput!
+  create: BookCreateWithoutPublishersInput!
 }
 
-input BookUpsertWithWhereUniqueWithoutPublisherInput {
+input BookUpsertWithWhereUniqueWithoutPublisherYearsInput {
   where: BookWhereUniqueInput!
-  update: BookUpdateWithoutPublisherDataInput!
-  create: BookCreateWithoutPublisherInput!
+  update: BookUpdateWithoutPublisherYearsDataInput!
+  create: BookCreateWithoutPublisherYearsInput!
 }
 
 input BookUpsertWithWhereUniqueWithoutSubjectsInput {
@@ -1491,24 +1491,24 @@ input BookWhereInput {
   cover_not_starts_with: String
   cover_ends_with: String
   cover_not_ends_with: String
-  author_every: AuthorWhereInput
-  author_some: AuthorWhereInput
-  author_none: AuthorWhereInput
+  authors_every: AuthorWhereInput
+  authors_some: AuthorWhereInput
+  authors_none: AuthorWhereInput
   couress_every: CouressWhereInput
   couress_some: CouressWhereInput
   couress_none: CouressWhereInput
-  catogory_every: CatogoryWhereInput
-  catogory_some: CatogoryWhereInput
-  catogory_none: CatogoryWhereInput
-  publiserYear_every: PubliserYearWhereInput
-  publiserYear_some: PubliserYearWhereInput
-  publiserYear_none: PubliserYearWhereInput
-  publisher_every: PublisherWhereInput
-  publisher_some: PublisherWhereInput
-  publisher_none: PublisherWhereInput
-  classRoom_every: ClassRoomWhereInput
-  classRoom_some: ClassRoomWhereInput
-  classRoom_none: ClassRoomWhereInput
+  catagories_every: CatogoryWhereInput
+  catagories_some: CatogoryWhereInput
+  catagories_none: CatogoryWhereInput
+  publisherYears_every: PubliserYearWhereInput
+  publisherYears_some: PubliserYearWhereInput
+  publisherYears_none: PubliserYearWhereInput
+  publishers_every: PublisherWhereInput
+  publishers_some: PublisherWhereInput
+  publishers_none: PublisherWhereInput
+  classRooms_every: ClassRoomWhereInput
+  classRooms_some: ClassRoomWhereInput
+  classRooms_none: ClassRoomWhereInput
   isListed: Boolean
   isListed_not: Boolean
   description: String
@@ -1582,7 +1582,7 @@ input CatogoryCreateInput {
   id: ID
   title: String!
   description: String
-  books: BookCreateManyWithoutCatogoryInput
+  books: BookCreateManyWithoutCatagoriesInput
   isListed: Boolean!
   status: Int!
 }
@@ -1727,7 +1727,7 @@ input CatogorySubscriptionWhereInput {
 input CatogoryUpdateInput {
   title: String
   description: String
-  books: BookUpdateManyWithoutCatogoryInput
+  books: BookUpdateManyWithoutCatagoriesInput
   isListed: Boolean
   status: Int
 }
@@ -1887,7 +1887,7 @@ input ClassRoomCreateInput {
   description: String
   isListed: Boolean!
   status: Int!
-  books: BookCreateManyWithoutClassRoomInput
+  books: BookCreateManyWithoutClassRoomsInput
 }
 
 input ClassRoomCreateManyWithoutBooksInput {
@@ -2051,7 +2051,7 @@ input ClassRoomUpdateInput {
   description: String
   isListed: Boolean
   status: Int
-  books: BookUpdateManyWithoutClassRoomInput
+  books: BookUpdateManyWithoutClassRoomsInput
 }
 
 input ClassRoomUpdateManyDataInput {
@@ -2617,7 +2617,7 @@ input PubliserYearCreateInput {
   description: String
   isListed: Boolean!
   status: Int!
-  books: BookCreateManyWithoutPubliserYearInput
+  books: BookCreateManyWithoutPublisherYearsInput
 }
 
 input PubliserYearCreateManyWithoutBooksInput {
@@ -2781,7 +2781,7 @@ input PubliserYearUpdateInput {
   description: String
   isListed: Boolean
   status: Int
-  books: BookUpdateManyWithoutPubliserYearInput
+  books: BookUpdateManyWithoutPublisherYearsInput
 }
 
 input PubliserYearUpdateManyDataInput {
@@ -2958,7 +2958,7 @@ input PublisherCreateInput {
   description: String
   phoneNumber: String
   address: String
-  books: BookCreateManyWithoutPublisherInput
+  books: BookCreateManyWithoutPublishersInput
   order: Int!
   isListed: Boolean!
 }
@@ -3160,7 +3160,7 @@ input PublisherUpdateInput {
   description: String
   phoneNumber: String
   address: String
-  books: BookUpdateManyWithoutPublisherInput
+  books: BookUpdateManyWithoutPublishersInput
   order: Int
   isListed: Boolean
 }
